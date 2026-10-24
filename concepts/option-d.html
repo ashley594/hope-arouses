@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hope Arouses — Option D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=WindSong&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #050505;
+    color: #f3ede4;
+    font-family: 'Jost', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 5vw;
+  }
+  .mark { font-size: 11px; letter-spacing: 0.3em; opacity: 0.6; }
+  a.contact {
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: #f3ede4; text-decoration: none; border-bottom: 1px solid transparent;
+  }
+  a.contact:hover { border-color: #f3ede4; }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 14vw 1px 1fr;
+    align-items: center;
+  }
+  .spine-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .spine {
+    font-family: 'WindSong', cursive;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    color: #f3ede4;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+  .divider {
+    height: 60vh;
+    background: rgba(243,237,228,0.18);
+  }
+  .content {
+    padding: 0 6vw;
+  }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.45em; text-transform: uppercase;
+    color: rgba(243,237,228,0.5);
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 48px;
+    max-width: 9ch;
+    text-transform: uppercase;
+  }
+  .signup {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid rgba(243,237,228,0.22);
+    padding-bottom: 10px;
+    max-width: 380px;
+  }
+  .signup input {
+    background: none; border: none; outline: none;
+    flex: 1;
+    color: #f3ede4; font-family: 'Jost'; font-size: 14px;
+  }
+  .signup input::placeholder { color: rgba(243,237,228,0.4); }
+  .signup button {
+    background: none; border: none; color: #f3ede4;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;
+    white-space: nowrap;
+  }
+  .contact-section {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(243,237,228,0.4);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .label {
+    position: fixed; bottom: 24px; left: 24px;
+    font-size: 10px; letter-spacing: 0.15em; color: rgba(243,237,228,0.35);
+    text-transform: uppercase;
+    z-index: 20;
+  }
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+    .spine-wrap { display: none; }
+    .divider { display: none; }
+    .content { padding: 120px 8vw 0; }
+  }
+</style>
+</head>
+<body>
+<div class="label">Option D — Split Composition / Vertical Spine</div>
+<header>
+  <div class="mark">HOPE&nbsp;AROUSES</div>
+  <a class="contact" href="#contact">Contact</a>
+</header>
+<section class="hero">
+  <div class="spine-wrap"><div class="spine">Hope Arouses</div></div>
+  <div class="divider"></div>
+  <div class="content">
+    <div class="eyebrow">Coming 2027</div>
+    <h1>A new house of intimates</h1>
+    <div class="signup">
+      <input type="email" placeholder="Your email address">
+      <button>Notify Me</button>
+    </div>
+  </div>
+</section>
+<section class="contact-section" id="contact">— contact block placeholder —</section>
+</body>
+</html>

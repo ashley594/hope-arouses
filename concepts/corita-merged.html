@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hope Arouses — Corita: Merged</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;700;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #f4f1e8;
+    color: #1a1a1a;
+    font-family: 'Archivo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+    display: flex; justify-content: space-between;
+    padding: 28px 5vw;
+  }
+  .mark { font-size: 12px; letter-spacing: 0.25em; font-weight: 700; }
+  a.contact {
+    font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: #1a1a1a; text-decoration: none; font-weight: 700;
+    border-bottom: 2px solid transparent;
+  }
+  a.contact:hover { border-color: #1a1a1a; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 8vw 60px;
+    overflow: hidden;
+  }
+
+  .sun {
+    position: absolute;
+    top: 12%;
+    right: 14vw;
+    width: 170px; height: 170px;
+    border-radius: 50%;
+    background: #e8b930;
+    z-index: 0;
+  }
+
+  .word-wrap {
+    position: relative;
+    text-align: center;
+    transform: rotate(-4deg);
+  }
+  .crop-word {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    color: #2c4ca0;
+    font-size: clamp(4rem, 13vw, 9rem);
+    line-height: 0.8;
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+  }
+  .arouses-word {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    color: #d4291b;
+    font-size: clamp(5.5rem, 18vw, 12.5rem);
+    line-height: 0.8;
+    position: relative;
+    margin-top: -0.26em;
+    z-index: 3;
+    white-space: nowrap;
+  }
+
+  .the-possible {
+    position: absolute;
+    right: 2vw;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1rem, 2.2vw, 1.5rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #2c4ca0;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    margin-top: 6vh;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #2c4ca0;
+    position: relative; z-index: 2;
+  }
+
+  .signup {
+    margin-top: 34px;
+    display: inline-flex;
+    border: 2px solid #1a1a1a;
+    position: relative; z-index: 2;
+  }
+  .signup input {
+    background: #f4f1e8; border: none; outline: none;
+    padding: 14px 18px; font-family: 'Archivo'; font-weight: 500; font-size: 14px;
+    width: 220px; color: #1a1a1a;
+  }
+  .signup input::placeholder { color: rgba(26,26,26,0.5); }
+  .signup button {
+    background: #1a1a1a; color: #f4f1e8; border: none;
+    padding: 0 22px; font-family: 'Archivo'; font-weight: 900; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  }
+
+  .contact-section {
+    min-height: 60vh;
+    background: #2c4ca0;
+    color: #f4f1e8;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .label {
+    position: fixed; bottom: 20px; left: 20px; z-index: 30;
+    font-size: 10px; letter-spacing: 0.1em; background: #1a1a1a; color: #f4f1e8;
+    padding: 4px 8px; text-transform: uppercase; font-family: 'Archivo';
+  }
+</style>
+</head>
+<body>
+<div class="label">Corita — Merged (no sidebar)</div>
+<header>
+  <div class="mark">HOPE&nbsp;AROUSES</div>
+  <a class="contact" href="#contact">Contact</a>
+</header>
+<section class="hero">
+  <div class="sun"></div>
+  <div class="the-possible">the possible</div>
+  <div class="word-wrap">
+    <div class="crop-word">Hope</div>
+    <div class="arouses-word">Arouses</div>
+  </div>
+  <div class="eyebrow">Coming 2027</div>
+  <div class="signup">
+    <input type="email" placeholder="your email">
+    <button>Notify Me</button>
+  </div>
+</section>
+<section class="contact-section" id="contact">— contact block placeholder —</section>
+</body>
+</html>

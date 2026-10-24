@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hope Arouses</title>
+<meta name="description" content="Hope Arouses — bras and underwear in natural fibers, designed around the fit problems everyone else has learned to live with. Coming 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF;--fg:#000000;--muted:#888888;--line:#E0E0E0;--accent-fg:#FFFFFF;
+  --sans:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#000000;--fg:#FFFFFF;--muted:#9A9A9A;--line:#333333;--accent-fg:#000000;color-scheme:dark}
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.5;letter-spacing:.03em;
+  padding-block:0 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column}
+.wrap{max-width:640px;margin:0 auto;width:100%}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;padding-block:18px 14px;border-bottom:1px solid var(--fg)}
+.mark{font-size:22px;letter-spacing:.02em;color:inherit;text-decoration:none}
+.tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;padding-block:56px 40px}
+main>*+*{margin-top:36px}
+h1{font-weight:400;font-size:clamp(28px,4.5vw,36px);line-height:1.2;letter-spacing:.02em;margin:0;text-wrap:balance;max-width:20em}
+.block{padding-top:28px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.block h2{font-weight:400;font-size:20px;letter-spacing:.02em;margin:0}
+.block p{margin:0;color:var(--muted);max-width:34em}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:14px 22px;border:1px solid var(--fg);background:var(--fg);color:var(--accent-fg)}
+.btn.ghost{background:transparent;color:var(--fg)}
+.btn:focus-visible{outline:1px solid var(--fg);outline-offset:3px}
+.time{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.contact{display:flex;flex-direction:column;gap:6px}
+.contact a{color:var(--fg);text-decoration:underline;text-underline-offset:4px;font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <a class="mark" href="/">Hope Arouses</a>
+  <span class="tag">Coming 2027</span>
+</header>
+
+<main>
+  <div>
+    <h1>Bras and underwear in natural fibers, designed around the fit problems you've learned to live with.</h1>
+  </div>
+
+  <section class="block">
+    <h2>Help us get it right.</h2>
+    <p>We're asking people about their underwear drawers and their bras before we make anything. About 15 minutes, anonymous, and you can sign up to test early samples at the end.</p>
+    <div class="actions">
+      <a class="btn" href="/survey">Take the survey</a>
+      <span class="time">About 15 minutes</span>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Say hello.</h2>
+    <div class="contact">
+      <a href="mailto:ashley@hopearouses.com" class="copy-email" data-email="ashley@hopearouses.com">ashley@hopearouses.com</a>
+      <a href="mailto:olivia@hopearouses.com" class="copy-email" data-email="olivia@hopearouses.com">olivia@hopearouses.com</a>
+    </div>
+  </section>
+</main>
+
+</div>
+
+<script>
+document.querySelectorAll('.copy-email').forEach(function(a){
+  var original = a.textContent;
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(a.dataset.email).then(function(){
+        a.textContent = 'Copied';
+        setTimeout(function(){ a.textContent = original; }, 1500);
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>

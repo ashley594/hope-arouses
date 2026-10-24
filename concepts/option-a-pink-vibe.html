@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hope Arouses — Pink Vibe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background-color: #e9b3c0;
+    background-image:
+      radial-gradient(ellipse at top, rgba(255,255,255,0.15), transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    color: #9a3324;
+    font-family: 'Jost', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 5vw;
+  }
+  .mark { font-size: 11px; letter-spacing: 0.3em; color: #9a3324; opacity: 0.8; font-weight: 500; }
+  a.contact {
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: #9a3324; text-decoration: none; border-bottom: 1px solid transparent; font-weight: 500;
+  }
+  a.contact:hover { border-color: #9a3324; }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+  }
+  h1 {
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+    font-size: clamp(7rem, 26vw, 17rem);
+    line-height: 0.85;
+    margin: 0;
+    color: #8f2c1f;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .eyebrow {
+    margin-top: 8px;
+    font-size: 12px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #9a3324;
+    font-weight: 500;
+  }
+  .signup {
+    margin-top: 60px;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid rgba(154,51,36,0.4);
+    padding-bottom: 10px;
+  }
+  .signup input {
+    background: none; border: none; outline: none;
+    color: #8f2c1f; font-family: 'Jost'; font-size: 14px; width: 240px; font-weight: 500;
+  }
+  .signup input::placeholder { color: rgba(154,51,36,0.55); }
+  .signup button {
+    background: none; border: none; color: #8f2c1f;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; font-weight: 600;
+  }
+  .label {
+    position: fixed; bottom: 24px; left: 24px;
+    font-size: 10px; letter-spacing: 0.15em; color: rgba(154,51,36,0.55);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="label">Pink / Madonna Inn Vibe — font: Tangerine (swap to your pick)</div>
+<header>
+  <div class="mark">HOPE&nbsp;AROUSES</div>
+  <a class="contact" href="#contact">Contact</a>
+</header>
+<section class="hero">
+  <h1>Hope Arouses</h1>
+  <div class="eyebrow">Coming 2027</div>
+  <div class="signup">
+    <input type="email" placeholder="Your email address">
+    <button>Notify Me</button>
+  </div>
+</section>
+</body>
+</html>

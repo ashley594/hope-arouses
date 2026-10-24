@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hope Arouses — Corita: Sun Sidebar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;700;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #f4f1e8;
+    color: #1a1a1a;
+    font-family: 'Archivo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+    display: flex; justify-content: space-between;
+    padding: 28px 5vw;
+    mix-blend-mode: difference;
+  }
+  .mark { font-size: 12px; letter-spacing: 0.25em; font-weight: 700; color: #f4f1e8; }
+  a.contact {
+    font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: #f4f1e8; text-decoration: none; font-weight: 700;
+    border-bottom: 2px solid transparent;
+  }
+  a.contact:hover { border-color: #f4f1e8; }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 34% 66%;
+  }
+  .sidebar {
+    background: #2c4ca0;
+    color: #f4f1e8;
+    padding: 140px 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .poem {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    line-height: 1.5;
+  }
+  .poem .line { display: block; }
+  .poem .indent { padding-left: 1.4em; }
+  .poem .name { display: block; margin-top: 28px; font-size: 0.75em; opacity: 0.7; }
+
+  .main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 140px 0 60px 6vw;
+    overflow: hidden;
+  }
+  .sun {
+    position: absolute;
+    top: 10%;
+    right: 18%;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: #e8b930;
+  }
+  .crop-word {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    color: #d4291b;
+    font-size: clamp(6rem, 20vw, 16rem);
+    line-height: 0.8;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+    margin-left: -0.02em;
+  }
+  .arouses-script {
+    font-family: 'Caveat', cursive;
+    font-style: italic;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    position: relative;
+    margin-top: -0.4em;
+    margin-left: 8%;
+    z-index: 3;
+  }
+  .bottom-row {
+    position: absolute;
+    bottom: 8%;
+    left: 6vw;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .eyebrow {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #2c4ca0;
+  }
+  .signup {
+    display: inline-flex;
+    border: 2px solid #1a1a1a;
+  }
+  .signup input {
+    background: #f4f1e8; border: none; outline: none;
+    padding: 12px 16px; font-family: 'Archivo'; font-weight: 500; font-size: 13px;
+    width: 200px; color: #1a1a1a;
+  }
+  .signup input::placeholder { color: rgba(26,26,26,0.5); }
+  .signup button {
+    background: #1a1a1a; color: #f4f1e8; border: none;
+    padding: 0 18px; font-family: 'Archivo'; font-weight: 900; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  }
+
+  .contact-section {
+    min-height: 60vh;
+    background: #d4291b;
+    color: #f4f1e8;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .label {
+    position: fixed; bottom: 20px; left: 20px; z-index: 30;
+    font-size: 10px; letter-spacing: 0.1em; background: #1a1a1a; color: #f4f1e8;
+    padding: 4px 8px; text-transform: uppercase; font-family: 'Archivo';
+  }
+  @media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; }
+    .sidebar { padding: 120px 24px 40px; }
+    .main { padding: 60px 0 120px 6vw; }
+  }
+</style>
+</head>
+<body>
+<div class="label">Corita — Sun Sidebar</div>
+<header>
+  <div class="mark">HOPE&nbsp;AROUSES</div>
+  <a class="contact" href="#contact">Contact</a>
+</header>
+<section class="hero">
+  <div class="sidebar">
+    <p class="poem">
+      <span class="line">hope arouses</span>
+      <span class="line indent">more than anything</span>
+      <span class="line indent">else can arouse</span>
+      <span class="line">a passion</span>
+      <span class="line indent">for the possible</span>
+      <span class="name">— william sloane coffin</span>
+    </p>
+  </div>
+  <div class="main">
+    <div class="sun"></div>
+    <div>
+      <div class="crop-word">Hope</div>
+      <div class="arouses-script">arouses.</div>
+    </div>
+    <div class="bottom-row">
+      <div class="eyebrow">Coming 2027</div>
+      <div class="signup">
+        <input type="email" placeholder="your email">
+        <button>Notify Me</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="contact-section" id="contact">— contact block placeholder —</section>
+</body>
+</html>

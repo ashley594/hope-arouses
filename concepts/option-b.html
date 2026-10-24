@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hope Arouses — Option B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Jost:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #050505;
+    color: #f3ede4;
+    font-family: 'Jost', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 5vw;
+  }
+  .mark { font-size: 11px; letter-spacing: 0.3em; opacity: 0.6; }
+  a.contact {
+    font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: #f3ede4; text-decoration: none; border-bottom: 1px solid transparent;
+  }
+  a.contact:hover { border-color: #f3ede4; }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    padding: 0 6vw;
+    position: relative;
+  }
+  .script {
+    font-family: 'Parisienne', cursive;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    color: rgba(243,237,228,0.85);
+    margin: 0 0 4vh;
+  }
+  .big {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: clamp(4.5rem, 15vw, 12rem);
+    line-height: 0.82;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-transform: uppercase;
+    color: #f3ede4;
+  }
+  .big .accent { font-weight: 600; }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 6vh;
+    border-top: 1px solid rgba(243,237,228,0.18);
+    padding-top: 24px;
+  }
+  .signup {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid rgba(243,237,228,0.22);
+    padding-bottom: 8px;
+  }
+  .signup input {
+    background: none; border: none; outline: none;
+    color: #f3ede4; font-family: 'Jost'; font-size: 14px; width: 240px;
+  }
+  .signup input::placeholder { color: rgba(243,237,228,0.4); }
+  .signup button {
+    background: none; border: none; color: #f3ede4;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;
+  }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(243,237,228,0.5);
+  }
+  .contact-section {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(243,237,228,0.4);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .label {
+    position: fixed; bottom: 24px; left: 24px;
+    font-size: 10px; letter-spacing: 0.15em; color: rgba(243,237,228,0.35);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="label">Option B — Asymmetric Scale Contrast</div>
+<header>
+  <div class="mark">EST.&nbsp;2026</div>
+  <a class="contact" href="#contact">Contact</a>
+</header>
+<section class="hero">
+  <div class="script">Hope Arouses</div>
+  <h1 class="big">Coming<br><span class="accent">2027</span></h1>
+  <div class="meta-row">
+    <div class="eyebrow">A new house<br>of intimates</div>
+    <div class="signup">
+      <input type="email" placeholder="Your email address">
+      <button>Notify Me</button>
+    </div>
+  </div>
+</section>
+<section class="contact-section" id="contact">— contact block placeholder —</section>
+</body>
+</html>

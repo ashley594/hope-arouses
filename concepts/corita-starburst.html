@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hope Arouses — Corita: Star Arrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;700;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #f4f1e8;
+    color: #1a1a1a;
+    font-family: 'Archivo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+    display: flex; justify-content: space-between;
+    padding: 28px 5vw;
+  }
+  .mark { font-size: 12px; letter-spacing: 0.25em; font-weight: 700; }
+  a.contact {
+    font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: #1a1a1a; text-decoration: none; font-weight: 700;
+    border-bottom: 2px solid transparent;
+  }
+  a.contact:hover { border-color: #1a1a1a; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 5vw 60px;
+  }
+
+  .star {
+    position: absolute;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  }
+  .star.s1 { width: 190px; height: 190px; background: #e8b930; top: 8%; left: 6%; transform: rotate(-8deg); }
+  .star.s2 { width: 90px; height: 90px; background: #e2402c; top: 14%; right: 10%; transform: rotate(14deg); }
+  .star.s3 { width: 60px; height: 60px; background: #e8b930; bottom: 12%; right: 16%; transform: rotate(20deg); }
+
+  .hope {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    color: #d4291b;
+    font-size: clamp(4.5rem, 15vw, 11rem);
+    line-height: 0.85;
+    position: relative;
+    z-index: 2;
+  }
+
+  .arrow {
+    position: relative;
+    margin-top: -2vh;
+    width: min(760px, 88vw);
+    background: #2c4ca0;
+    clip-path: polygon(0% 20%, 78% 20%, 78% 0%, 100% 50%, 78% 100%, 78% 80%, 0% 80%);
+    padding: 46px 60px 46px 40px;
+    transform: rotate(-1deg);
+    z-index: 1;
+  }
+  .arrow .arouses {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    color: #f4f1e8;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 0.9;
+  }
+
+  .eyebrow {
+    margin-top: 5vh;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #2c4ca0;
+    text-align: center;
+    position: relative; z-index: 2;
+  }
+
+  .quote-credit {
+    margin-top: 20px;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    max-width: 460px;
+    text-align: center;
+    line-height: 1.3;
+    position: relative; z-index: 2;
+  }
+  .quote-credit .name { display: block; margin-top: 6px; font-size: 0.85em; opacity: 0.65; }
+
+  .signup {
+    margin-top: 34px;
+    display: inline-flex;
+    position: relative; z-index: 2;
+  }
+  .signup input {
+    background: #f4f1e8; border: 2px solid #1a1a1a; border-right: none; outline: none;
+    padding: 14px 18px; font-family: 'Archivo'; font-weight: 500; font-size: 14px;
+    width: 220px; color: #1a1a1a;
+  }
+  .signup input::placeholder { color: rgba(26,26,26,0.5); }
+  .signup button {
+    background: #e8b930; color: #1a1a1a; border: 2px solid #1a1a1a;
+    padding: 0 22px; font-family: 'Archivo'; font-weight: 900; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  }
+
+  .contact-section {
+    min-height: 60vh;
+    background: #2c4ca0;
+    color: #f4f1e8;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .label {
+    position: fixed; bottom: 20px; left: 20px; z-index: 30;
+    font-size: 10px; letter-spacing: 0.1em; background: #1a1a1a; color: #f4f1e8;
+    padding: 4px 8px; text-transform: uppercase; font-family: 'Archivo';
+  }
+</style>
+</head>
+<body>
+<div class="label">Corita — Star Arrow</div>
+<header>
+  <div class="mark">HOPE&nbsp;AROUSES</div>
+  <a class="contact" href="#contact">Contact</a>
+</header>
+<section class="hero">
+  <div class="star s1"></div>
+  <div class="star s2"></div>
+  <div class="star s3"></div>
+  <div class="hope">Hope</div>
+  <div class="arrow"><div class="arouses">Arouses</div></div>
+  <div class="eyebrow">Coming 2027</div>
+  <p class="quote-credit">
+    "Hope arouses, more than anything else can arouse, a passion for the possible."
+    <span class="name">— William Sloane Coffin</span>
+  </p>
+  <div class="signup">
+    <input type="email" placeholder="your email">
+    <button>Notify Me</button>
+  </div>
+</section>
+<section class="contact-section" id="contact">— contact block placeholder —</section>
+</body>
+</html>

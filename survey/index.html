@@ -1,0 +1,1754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Hope Arouses — Survey</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&display=swap">
+<style>
+/* Layout: white ground, one centered column, hairline rules between groups, wordmark header. Swiss retail idiom: one grotesque sans, open tracking, square corners, outlined uppercase buttons. */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --fg:#000000; --muted:#888888; --line:#E0E0E0;
+  --accent:#000000; --accent-fg:#FFFFFF; --accent-soft:#F2F2F2;
+  --note:#545454; --note-bg:#F2F2F2;
+  --sans:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#000000;--surface:#000000;--fg:#FFFFFF;--muted:#9A9A9A;--line:#333333;
+    --accent:#FFFFFF;--accent-fg:#000000;--accent-soft:#1A1A1A;--note:#C8C8C8;--note-bg:#1A1A1A;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#000000;--surface:#000000;--fg:#FFFFFF;--muted:#9A9A9A;--line:#333333;
+  --accent:#FFFFFF;--accent-fg:#000000;--accent-soft:#1A1A1A;--note:#C8C8C8;--note-bg:#1A1A1A;color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.5;letter-spacing:.03em;margin:0;
+  padding-block:0 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;max-width:640px;margin:0 auto;padding-block:18px 14px;border-bottom:1px solid var(--fg)}
+.masthead .mark{font-size:22px;letter-spacing:.02em;margin:0}
+.masthead .step{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
+.progress{height:1px;background:var(--line);margin:0 auto;max-width:640px;overflow:hidden}
+.progress>i{display:block;height:100%;width:0;background:var(--fg);transition:width .35s ease}
+@media (prefers-reduced-motion:reduce){.progress>i{transition:none}}
+.wrap{max-width:640px;margin:0 auto}
+.screen{display:flex;flex-direction:column;gap:0;padding-top:40px}
+.screen>*+*{margin-top:36px}
+.screen>.eyebrow+*{margin-top:12px}
+.screen>h1+.lede,.screen>h2+.lede,.screen>h1+.placeholder{margin-top:20px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:400;margin:0}
+h1,h2{font-family:var(--sans);font-weight:400;line-height:1.2;margin:0;text-wrap:balance;letter-spacing:.02em}
+h1{font-size:clamp(28px,4.5vw,36px)}
+h2{font-size:clamp(24px,4vw,30px)}
+.lede{font-size:16px;color:var(--muted);margin:0;max-width:34em}
+.lede+.lede{margin-top:14px}
+.lede strong{color:var(--fg);font-weight:400}
+.q{display:flex;flex-direction:column;gap:14px;padding-top:28px;border-top:1px solid var(--line)}
+.screen>.q+.q{margin-top:28px}
+.q label.qtext,.q .qtext{font-weight:400;font-size:17px;margin:0;display:block}
+.q .qtext small{display:block;color:var(--muted);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+.opts{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.opts.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.opt{display:flex;align-items:flex-start;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:0;padding:12px 14px;cursor:pointer;min-width:0;font-size:15px}
+.opt:has(input:checked){border-color:var(--fg)}
+.opt:has(input:focus-visible){outline:1px solid var(--fg);outline-offset:2px}
+.opt input{margin:3px 0 0;accent-color:var(--fg);flex:none;width:16px;height:16px}
+.opt span{min-width:0}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px}
+.pill{position:relative}
+.pill input{position:absolute;opacity:0;inset:0}
+.pill span{display:inline-block;padding:10px 16px;border:1px solid var(--line);border-radius:0;background:var(--surface);cursor:pointer;font-size:15px}
+.pill:has(input:checked) span{border-color:var(--fg);background:var(--fg);color:var(--accent-fg)}
+.pill:has(input:focus-visible) span{outline:1px solid var(--fg);outline-offset:2px}
+input[type=text],input[type=email],textarea,select{font:inherit;letter-spacing:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:0;padding:12px 14px;width:100%}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none;border-color:var(--fg)}
+textarea{min-height:96px;resize:vertical}
+.inline{display:flex;gap:10px;flex-wrap:wrap}
+.inline>*{flex:1 1 140px;min-width:0}
+.other{margin-top:0}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:28px;border-top:1px solid var(--fg);flex-wrap:wrap}
+button{font:inherit;font-size:12px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:0;padding:14px 22px;border:1px solid var(--fg);background:var(--fg);color:var(--accent-fg)}
+button.ghost{background:transparent;color:var(--fg)}
+button.link{background:none;border:none;color:var(--muted);padding:8px 0;text-decoration:underline;text-underline-offset:4px;text-transform:none;letter-spacing:.03em;font-size:14px}
+button:focus-visible{outline:1px solid var(--fg);outline-offset:3px}
+.placeholder{border:1px dashed var(--muted);background:var(--note-bg);color:var(--note);border-radius:0;padding:16px 18px;font-size:14px}
+.placeholder b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;font-weight:400}
+.meta{font-size:14px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+.card{background:var(--surface);border-top:1px solid var(--line);border-radius:0;padding:28px 0 0}
+.card h3{font-weight:400;font-size:20px;margin:0 0 8px;letter-spacing:.02em}
+.links{display:flex;gap:20px;flex-wrap:wrap}
+.links a{color:var(--fg);text-underline-offset:4px;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.err{color:var(--fg);font-size:13px;display:none}
+.q.invalid .err{display:block}
+hr.sep{border:0;border-top:1px solid var(--line);margin:0}
+[hidden]{display:none!important}
+img{max-width:100%}
+.signoff{color:var(--fg);font-size:16px;margin:0}
+.qhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.qplus{flex:none;width:28px;height:28px;padding:0;font-size:16px;line-height:1;font-weight:400;letter-spacing:0;text-transform:none;background:transparent;color:var(--muted);border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center}
+.qplus:hover{color:var(--fg);border-color:var(--fg)}
+.qplus.active{border-color:var(--fg);background:var(--fg);color:var(--accent-fg)}
+.qnote{display:none;margin-top:14px}
+.qnote.open{display:block}
+.qnote textarea{min-height:64px}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="mark">Hope Arouses</p>
+  <p class="step" id="stepLabel">Survey</p>
+</header>
+<div class="progress"><i id="bar"></i></div>
+<div class="wrap">
+  <form id="survey" novalidate>
+    <section class="screen" data-step="welcome" data-cat="all">
+  <p class="eyebrow">Underwear &amp; bras</p>
+  <h1>Warmest welcome!</h1>
+  <p class="lede">Hello dearest friends and family,</p>
+  <p class="lede">First, a warm welcome and a sincerest thank you for the support you've shown
+  us over the past few months. We feel it, and we're excited to invite you to participate in
+  this next phase of building Hope Arouses.</p>
+  <p class="lede">Before this goes out to hundreds of women, we want to make sure we're asking
+  the right questions. Your answers will help us refine them so we can get the information we
+  need to make important decisions about our business. All we ask is that you answer as
+  honestly as you can &mdash; and if the honest answer is &ldquo;I've never thought about
+  this,&rdquo; that's genuinely useful to us too. <strong>If a question is confusing, or none
+  of the options quite fit you, please text us or leave a comment.</strong> That's exactly the
+  kind of feedback we're hoping for.</p>
+  <p class="lede">It takes <strong>15 minutes tops</strong>, and a few of the questions get
+  personal &mdash; sizing, measurements, money. Though we hope you answer each question, every
+  single one is optional, so please skip anything you'd rather not answer.</p>
+  <p class="lede">We are in the middle of finalizing our underwear and bralette patterns and
+  are working to find the right partners to bring our bras and underwear to the world. The
+  information from this survey will help us build a size range that reflects real bodies
+  instead of guessing, get the fit right, select the right fabrics, place the right sizing
+  orders with our partners, price things appropriately, and find the people who are looking
+  for what we're building.</p>
+  <p class="lede">Thank you, truly. We're building our dream company and are so glad to bring
+  you along into our process.</p>
+  <p class="signoff">With hope and love,<br>Ashley + Olivia, your friends and Co-Founders of
+  Hope Arouses</p>
+  <div class="nav"><span></span><button type="button" data-next>Next</button></div>
+</section><section class="screen" data-step="scope" data-cat="all" hidden>
+<p class="eyebrow">First</p>
+<h2>A little routing, then we begin.</h2>
+
+<div class="q">
+  <p class="qtext">Which would you like to answer about today?</p>
+  <div class="opts">
+    <label class="opt"><input type="radio" name="scope" value="both" checked><span>Both &mdash; underwear and bras</span></label>
+    <label class="opt"><input type="radio" name="scope" value="underwear"><span>Just underwear</span></label>
+    <label class="opt"><input type="radio" name="scope" value="bras"><span>Just bras</span></label>
+  </div>
+</div>
+
+<div class="nav"><button type="button" class="ghost" data-back>Back</button><button type="button" data-next>Next</button></div>
+</section><section class="screen" data-step="uw" data-cat="uw" hidden>
+<p class="eyebrow">Part one</p>
+<h2>Your underwear.</h2>
+<p class="lede">Every question is optional &mdash; skip anything you'd rather not answer.</p>
+<div class="q" id="q-uw1">
+<p class="qtext">Which pair of underwear do you reach for first?<small>Just the brand, if you know it.</small></p>
+<input type="text" name="uw1" autocomplete="off">
+<div class="opts">
+<label class="opt"><input type="radio" name="uw1" value="I don&#x27;t know the brand"><span>I don&#x27;t know the brand</span></label>
+<label class="opt"><input type="radio" name="uw1" value="There&#x27;s no label I can find"><span>There&#x27;s no label I can find</span></label>
+</div>
+</div>
+<div class="q" id="q-uw2">
+<p class="qtext">What makes that pair the one you reach for?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="uw2[]" value="They stay put, they don&#x27;t ride up"><span>They stay put, they don&#x27;t ride up</span></label>
+<label class="opt"><input type="checkbox" name="uw2[]" value="Comfortable all day"><span>Comfortable all day</span></label>
+<label class="opt"><input type="checkbox" name="uw2[]" value="The fabric feels good"><span>The fabric feels good</span></label>
+<label class="opt"><input type="checkbox" name="uw2[]" value="Invisible under clothes"><span>Invisible under clothes</span></label>
+<label class="opt"><input type="checkbox" name="uw2[]" value="The right shape for me"><span>The right shape for me</span></label>
+<label class="opt"><input type="checkbox" name="uw2[]" value="They&#x27;ve lasted well"><span>They&#x27;ve lasted well</span></label>
+</div>
+<input type="text" class="other" name="uw2_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-uw3">
+<p class="qtext">Separately — what brand makes the best pair of underwear you&#x27;ve ever owned?</p>
+<input type="text" name="uw3" autocomplete="off">
+<div class="opts">
+<label class="opt"><input type="radio" name="uw3" value="Same as above"><span>Same as above</span></label>
+<label class="opt"><input type="radio" name="uw3" value="Can&#x27;t think of one"><span>Can&#x27;t think of one</span></label>
+</div>
+</div>
+<div class="q" id="q-uw4">
+<p class="qtext">Could you buy that pair again today?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw4" value="Yes, I&#x27;ve rebought them"><span>Yes, I&#x27;ve rebought them</span></label>
+<label class="opt"><input type="radio" name="uw4" value="Yes, but I haven&#x27;t"><span>Yes, but I haven&#x27;t</span></label>
+<label class="opt"><input type="radio" name="uw4" value="No, they&#x27;re discontinued"><span>No, they&#x27;re discontinued</span></label>
+<label class="opt"><input type="radio" name="uw4" value="No, they stopped making my size"><span>No, they stopped making my size</span></label>
+<label class="opt"><input type="radio" name="uw4" value="I don&#x27;t know"><span>I don&#x27;t know</span></label>
+</div>
+</div>
+<p class="eyebrow">What&#x27;s in the drawer</p>
+<div class="q" id="q-uw5">
+<p class="qtext">How many pairs of underwear do you own?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw5" value="1–5"><span>1–5</span></label>
+<label class="pill"><input type="radio" name="uw5" value="6–10"><span>6–10</span></label>
+<label class="pill"><input type="radio" name="uw5" value="11–20"><span>11–20</span></label>
+<label class="pill"><input type="radio" name="uw5" value="21–30"><span>21–30</span></label>
+<label class="pill"><input type="radio" name="uw5" value="31 or more"><span>31 or more</span></label>
+</div>
+</div>
+<div class="q" id="q-uw6">
+<p class="qtext">Of those, how many do you actually wear?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw6" value="Almost all of them"><span>Almost all of them</span></label>
+<label class="opt"><input type="radio" name="uw6" value="About half"><span>About half</span></label>
+<label class="opt"><input type="radio" name="uw6" value="Only a few"><span>Only a few</span></label>
+<label class="opt"><input type="radio" name="uw6" value="Basically one or two"><span>Basically one or two</span></label>
+</div>
+</div>
+<div class="q" id="q-uw7">
+<p class="qtext">Which of these bigger brands have you bought underwear from in the past year?<small>Select all that apply</small></p>
+<div class="opts grid" data-shuffle="1">
+<label class="opt"><input type="checkbox" name="uw7[]" value="GAP"><span>GAP</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Uniqlo"><span>Uniqlo</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Victoria&#x27;s Secret / PINK"><span>Victoria&#x27;s Secret / PINK</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Aerie"><span>Aerie</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Target brands"><span>Target brands</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Hanes / Fruit of the Loom"><span>Hanes / Fruit of the Loom</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Calvin Klein"><span>Calvin Klein</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Skims"><span>Skims</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Lululemon"><span>Lululemon</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="Old Navy"><span>Old Navy</span></label>
+<label class="opt"><input type="checkbox" name="uw7[]" value="None of these"><span>None of these</span></label>
+</div>
+</div>
+<div class="q" id="q-uw8">
+<p class="qtext">And any independent or specialty brands?<small>Select all that apply</small></p>
+<div class="pill-row" data-shuffle="1">
+<label class="pill"><input type="checkbox" name="uw8[]" value="Pact"><span>Pact</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Organic Basics"><span>Organic Basics</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Knix"><span>Knix</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Cuup"><span>Cuup</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="ThirdLove"><span>ThirdLove</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Base Range"><span>Base Range</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Negative"><span>Negative</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Cou Cou"><span>Cou Cou</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Hanro"><span>Hanro</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Hanky Panky"><span>Hanky Panky</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Natori"><span>Natori</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Wacoal"><span>Wacoal</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="Parade"><span>Parade</span></label>
+<label class="pill"><input type="checkbox" name="uw8[]" value="None of these"><span>None of these</span></label>
+</div>
+<input type="text" class="other" name="uw8_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-uw9">
+<p class="qtext">Which brand was your most recent underwear purchase?</p>
+<input type="text" name="uw9" autocomplete="off">
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw9" value="I don&#x27;t remember"><span>I don&#x27;t remember</span></label>
+</div>
+</div>
+<div class="q" id="q-uw10">
+<p class="qtext">Which styles do you own?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="uw10[]" value="Thong"><span>Thong</span></label>
+<label class="opt"><input type="checkbox" name="uw10[]" value="Bikini or brief"><span>Bikini or brief</span></label>
+<label class="opt"><input type="checkbox" name="uw10[]" value="Boyshort"><span>Boyshort</span></label>
+<label class="opt"><input type="checkbox" name="uw10[]" value="High-waist"><span>High-waist</span></label>
+<label class="opt"><input type="checkbox" name="uw10[]" value="Hipster"><span>Hipster</span></label>
+<label class="opt"><input type="checkbox" name="uw10[]" value="Boxer or trunk"><span>Boxer or trunk</span></label>
+<label class="opt"><input type="checkbox" name="uw10[]" value="Seamless"><span>Seamless</span></label>
+<label class="opt"><input type="checkbox" name="uw10[]" value="Period or leak-proof"><span>Period or leak-proof</span></label>
+<label class="opt"><input type="checkbox" name="uw10[]" value="Shapewear"><span>Shapewear</span></label>
+</div>
+<input type="text" class="other" name="uw10_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-uw11">
+<p class="qtext">Which do you wear most days?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw11" value="Thong"><span>Thong</span></label>
+<label class="opt"><input type="radio" name="uw11" value="Bikini or brief"><span>Bikini or brief</span></label>
+<label class="opt"><input type="radio" name="uw11" value="Boyshort"><span>Boyshort</span></label>
+<label class="opt"><input type="radio" name="uw11" value="High-waist"><span>High-waist</span></label>
+<label class="opt"><input type="radio" name="uw11" value="Hipster"><span>Hipster</span></label>
+<label class="opt"><input type="radio" name="uw11" value="Boxer or trunk"><span>Boxer or trunk</span></label>
+<label class="opt"><input type="radio" name="uw11" value="Seamless"><span>Seamless</span></label>
+<label class="opt"><input type="radio" name="uw11" value="Period or leak-proof"><span>Period or leak-proof</span></label>
+<label class="opt"><input type="radio" name="uw11" value="Shapewear"><span>Shapewear</span></label>
+</div>
+<input type="text" class="other" name="uw11_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-uw12">
+<p class="qtext">Where do you like underwear to sit on you?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw12" value="At or above the belly button"><span>At or above the belly button</span></label>
+<label class="opt"><input type="radio" name="uw12" value="Just below the belly button"><span>Just below the belly button</span></label>
+<label class="opt"><input type="radio" name="uw12" value="At the hip"><span>At the hip</span></label>
+<label class="opt"><input type="radio" name="uw12" value="Low on the hip"><span>Low on the hip</span></label>
+<label class="opt"><input type="radio" name="uw12" value="It depends on the outfit"><span>It depends on the outfit</span></label>
+<label class="opt"><input type="radio" name="uw12" value="I&#x27;ve never thought about it"><span>I&#x27;ve never thought about it</span></label>
+</div>
+</div>
+<p class="eyebrow">Sizing</p>
+<div class="q" id="q-uw13">
+<p class="qtext">What size underwear do you usually buy?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw13" value="XS"><span>XS</span></label>
+<label class="opt"><input type="radio" name="uw13" value="S"><span>S</span></label>
+<label class="opt"><input type="radio" name="uw13" value="M"><span>M</span></label>
+<label class="opt"><input type="radio" name="uw13" value="L"><span>L</span></label>
+<label class="opt"><input type="radio" name="uw13" value="XL"><span>XL</span></label>
+<label class="opt"><input type="radio" name="uw13" value="2XL"><span>2XL</span></label>
+<label class="opt"><input type="radio" name="uw13" value="3XL or larger"><span>3XL or larger</span></label>
+<label class="opt"><input type="radio" name="uw13" value="I buy numeric sizes (0–24)"><span>I buy numeric sizes (0–24)</span></label>
+<label class="opt"><input type="radio" name="uw13" value="I don&#x27;t know"><span>I don&#x27;t know</span></label>
+</div>
+</div>
+<div class="q" id="q-uw13b">
+<p class="qtext">If you buy numeric sizes, which?<small>Leave blank if this doesn&#x27;t apply.</small></p>
+<input type="text" name="uw13b" autocomplete="off">
+</div>
+<div class="q" id="q-uw14">
+<p class="qtext">Does the size you buy change from brand to brand?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw14" value="Often"><span>Often</span></label>
+<label class="pill"><input type="radio" name="uw14" value="Sometimes"><span>Sometimes</span></label>
+<label class="pill"><input type="radio" name="uw14" value="No"><span>No</span></label>
+<label class="pill"><input type="radio" name="uw14" value="I don&#x27;t know"><span>I don&#x27;t know</span></label>
+</div>
+</div>
+<p class="eyebrow">Buying &amp; spending</p>
+<div class="q" id="q-uw15">
+<p class="qtext">When you buy underwear, is it usually for everyday wear, or for feeling good / a special occasion?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw15" value="Mostly everyday"><span>Mostly everyday</span></label>
+<label class="opt"><input type="radio" name="uw15" value="Mostly special"><span>Mostly special</span></label>
+<label class="opt"><input type="radio" name="uw15" value="Both, and I buy different pairs for each"><span>Both, and I buy different pairs for each</span></label>
+<label class="opt"><input type="radio" name="uw15" value="Both, and the same pairs do double duty"><span>Both, and the same pairs do double duty</span></label>
+</div>
+</div>
+<div class="q" id="q-uw16">
+<p class="qtext">What do you typically spend on a single pair of everyday underwear?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw16" value="Under $10"><span>Under $10</span></label>
+<label class="pill"><input type="radio" name="uw16" value="$10–19"><span>$10–19</span></label>
+<label class="pill"><input type="radio" name="uw16" value="$20–29"><span>$20–29</span></label>
+<label class="pill"><input type="radio" name="uw16" value="$30–39"><span>$30–39</span></label>
+<label class="pill"><input type="radio" name="uw16" value="$40–59"><span>$40–59</span></label>
+<label class="pill"><input type="radio" name="uw16" value="$60+"><span>$60+</span></label>
+</div>
+</div>
+<div class="q" id="q-uw17">
+<p class="qtext">And for a special-occasion pair, if you buy those?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw17" value="Under $10"><span>Under $10</span></label>
+<label class="opt"><input type="radio" name="uw17" value="$10–19"><span>$10–19</span></label>
+<label class="opt"><input type="radio" name="uw17" value="$20–29"><span>$20–29</span></label>
+<label class="opt"><input type="radio" name="uw17" value="$30–39"><span>$30–39</span></label>
+<label class="opt"><input type="radio" name="uw17" value="$40–59"><span>$40–59</span></label>
+<label class="opt"><input type="radio" name="uw17" value="$60+"><span>$60+</span></label>
+<label class="opt"><input type="radio" name="uw17" value="I don&#x27;t buy those"><span>I don&#x27;t buy those</span></label>
+</div>
+</div>
+<div class="q" id="q-uw18">
+<p class="qtext">What&#x27;s the most you&#x27;ve ever paid for a single pair?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw18" value="Under $10"><span>Under $10</span></label>
+<label class="pill"><input type="radio" name="uw18" value="$10–19"><span>$10–19</span></label>
+<label class="pill"><input type="radio" name="uw18" value="$20–29"><span>$20–29</span></label>
+<label class="pill"><input type="radio" name="uw18" value="$30–39"><span>$30–39</span></label>
+<label class="pill"><input type="radio" name="uw18" value="$40–59"><span>$40–59</span></label>
+<label class="pill"><input type="radio" name="uw18" value="$60+"><span>$60+</span></label>
+</div>
+</div>
+<div class="q" id="q-uw19">
+<p class="qtext">Do you still wear them?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw19" value="Yes"><span>Yes</span></label>
+<label class="opt"><input type="radio" name="uw19" value="No"><span>No</span></label>
+<label class="opt"><input type="radio" name="uw19" value="I don&#x27;t remember which pair it was"><span>I don&#x27;t remember which pair it was</span></label>
+</div>
+</div>
+<div class="q" id="q-uw20">
+<p class="qtext">Roughly how much have you spent on underwear in the past 12 months?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw20" value="Under $50"><span>Under $50</span></label>
+<label class="pill"><input type="radio" name="uw20" value="$50–99"><span>$50–99</span></label>
+<label class="pill"><input type="radio" name="uw20" value="$100–249"><span>$100–249</span></label>
+<label class="pill"><input type="radio" name="uw20" value="$250–499"><span>$250–499</span></label>
+<label class="pill"><input type="radio" name="uw20" value="$500 or more"><span>$500 or more</span></label>
+</div>
+</div>
+<div class="q" id="q-uw21">
+<p class="qtext">About how many separate times did you buy underwear in the past 12 months?<small>Counting each order or shopping trip once, however many pairs.</small></p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw21" value="0"><span>0</span></label>
+<label class="pill"><input type="radio" name="uw21" value="1–2"><span>1–2</span></label>
+<label class="pill"><input type="radio" name="uw21" value="3–5"><span>3–5</span></label>
+<label class="pill"><input type="radio" name="uw21" value="6–10"><span>6–10</span></label>
+<label class="pill"><input type="radio" name="uw21" value="11 or more"><span>11 or more</span></label>
+</div>
+</div>
+<div class="q" id="q-uw22">
+<p class="qtext">Where did you buy the most recent pair?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw22" value="The brand&#x27;s own website"><span>The brand&#x27;s own website</span></label>
+<label class="opt"><input type="radio" name="uw22" value="Amazon"><span>Amazon</span></label>
+<label class="opt"><input type="radio" name="uw22" value="A department store"><span>A department store</span></label>
+<label class="opt"><input type="radio" name="uw22" value="A specialty boutique or bra shop"><span>A specialty boutique or bra shop</span></label>
+<label class="opt"><input type="radio" name="uw22" value="A big box or mass retailer"><span>A big box or mass retailer</span></label>
+<label class="opt"><input type="radio" name="uw22" value="Secondhand or thrifted"><span>Secondhand or thrifted</span></label>
+<label class="opt"><input type="radio" name="uw22" value="Somewhere else"><span>Somewhere else</span></label>
+</div>
+</div>
+<div class="q" id="q-uw23">
+<p class="qtext">What actually triggered that purchase?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw23" value="I found a hole or a worn spot"><span>I found a hole or a worn spot</span></label>
+<label class="opt"><input type="radio" name="uw23" value="I ran out of clean ones"><span>I ran out of clean ones</span></label>
+<label class="opt"><input type="radio" name="uw23" value="My size changed"><span>My size changed</span></label>
+<label class="opt"><input type="radio" name="uw23" value="I saw an ad or a post"><span>I saw an ad or a post</span></label>
+<label class="opt"><input type="radio" name="uw23" value="There was a sale"><span>There was a sale</span></label>
+<label class="opt"><input type="radio" name="uw23" value="I was restocking a favorite"><span>I was restocking a favorite</span></label>
+<label class="opt"><input type="radio" name="uw23" value="It was a gift"><span>It was a gift</span></label>
+</div>
+<input type="text" class="other" name="uw23_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-uw24">
+<p class="qtext">Where did you first hear about that brand?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw24" value="Instagram or social media"><span>Instagram or social media</span></label>
+<label class="opt"><input type="radio" name="uw24" value="A friend or family member"><span>A friend or family member</span></label>
+<label class="opt"><input type="radio" name="uw24" value="An online search"><span>An online search</span></label>
+<label class="opt"><input type="radio" name="uw24" value="A lingerie or bra shop"><span>A lingerie or bra shop</span></label>
+<label class="opt"><input type="radio" name="uw24" value="Saw it in a store"><span>Saw it in a store</span></label>
+<label class="opt"><input type="radio" name="uw24" value="An ad"><span>An ad</span></label>
+<label class="opt"><input type="radio" name="uw24" value="An influencer or content creator"><span>An influencer or content creator</span></label>
+<label class="opt"><input type="radio" name="uw24" value="Word of mouth"><span>Word of mouth</span></label>
+<label class="opt"><input type="radio" name="uw24" value="I don&#x27;t remember"><span>I don&#x27;t remember</span></label>
+</div>
+<input type="text" class="other" name="uw24_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-uw25">
+<p class="qtext">How many different underwear brands have you tried in the past 2 years?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw25" value="Just one"><span>Just one</span></label>
+<label class="pill"><input type="radio" name="uw25" value="2–3"><span>2–3</span></label>
+<label class="pill"><input type="radio" name="uw25" value="4–5"><span>4–5</span></label>
+<label class="pill"><input type="radio" name="uw25" value="6 or more"><span>6 or more</span></label>
+</div>
+</div>
+<div class="q" id="q-uw26">
+<p class="qtext">Has price ever stopped you from buying underwear you otherwise wanted?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw26" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="uw26" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-uw26b">
+<p class="qtext">If yes, roughly what was it priced at?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw26b" value="Under $10"><span>Under $10</span></label>
+<label class="pill"><input type="radio" name="uw26b" value="$10–19"><span>$10–19</span></label>
+<label class="pill"><input type="radio" name="uw26b" value="$20–29"><span>$20–29</span></label>
+<label class="pill"><input type="radio" name="uw26b" value="$30–39"><span>$30–39</span></label>
+<label class="pill"><input type="radio" name="uw26b" value="$40–59"><span>$40–59</span></label>
+<label class="pill"><input type="radio" name="uw26b" value="$60+"><span>$60+</span></label>
+<label class="pill"><input type="radio" name="uw26b" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+</div>
+<p class="eyebrow">What goes wrong</p>
+<div class="q" id="q-uw27">
+<p class="qtext">Think about the underwear in your drawer you never reach for — what&#x27;s wrong with them?<small>Select all that apply &middot; Sometimes we buy a pair because we like how they look, and then never actually wear them.</small></p>
+<div class="opts grid">
+<label class="opt"><input type="checkbox" name="uw27[]" value="The waistband digs in or rolls"><span>The waistband digs in or rolls</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="They ride up"><span>They ride up</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="The fabric panel at the crotch is too short or too narrow"><span>The fabric panel at the crotch is too short or too narrow</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="The leg openings dig in"><span>The leg openings dig in</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="They bunch up"><span>They bunch up</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="The fabric feels itchy or irritating"><span>The fabric feels itchy or irritating</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="Seams or tags bother me"><span>Seams or tags bother me</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="They&#x27;re see-through under light-colored clothing"><span>They&#x27;re see-through under light-colored clothing</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="They lost their shape in the wash"><span>They lost their shape in the wash</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="They wore out fast"><span>They wore out fast</span></label>
+<label class="opt"><input type="checkbox" name="uw27[]" value="They never fit right from the start"><span>They never fit right from the start</span></label>
+</div>
+<input type="text" class="other" name="uw27_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-uw28">
+<p class="qtext">Of those, which one bothers you most?</p>
+<input type="text" name="uw28" autocomplete="off">
+</div>
+<div class="q" id="q-uw29">
+<p class="qtext">Have you ever thrown out or stopped wearing nearly new underwear because of one of these?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw29" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="uw29" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-uw29b">
+<p class="qtext">If yes, what happened?</p>
+<textarea name="uw29b"></textarea>
+</div>
+<div class="q" id="q-uw30">
+<p class="qtext">Do you think about visible lines under your clothing when choosing underwear?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw30" value="A lot"><span>A lot</span></label>
+<label class="pill"><input type="radio" name="uw30" value="Somewhat"><span>Somewhat</span></label>
+<label class="pill"><input type="radio" name="uw30" value="Not at all"><span>Not at all</span></label>
+</div>
+</div>
+<div class="q" id="q-uw31">
+<p class="qtext">Is there an underwear problem no brand has solved for you?</p>
+<textarea name="uw31"></textarea>
+</div>
+<p class="eyebrow">Materials &amp; care</p>
+<div class="q" id="q-uw32">
+<p class="qtext">Do you know what your everyday underwear is made of?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw32" value="Yes, I check labels"><span>Yes, I check labels</span></label>
+<label class="opt"><input type="radio" name="uw32" value="I have a general idea"><span>I have a general idea</span></label>
+<label class="opt"><input type="radio" name="uw32" value="Not really, I don&#x27;t think about it"><span>Not really, I don&#x27;t think about it</span></label>
+</div>
+</div>
+<div class="q" id="q-uw33">
+<p class="qtext">Which materials do you look for or prefer?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="uw33[]" value="Cotton"><span>Cotton</span></label>
+<label class="opt"><input type="checkbox" name="uw33[]" value="Merino or wool"><span>Merino or wool</span></label>
+<label class="opt"><input type="checkbox" name="uw33[]" value="Silk"><span>Silk</span></label>
+<label class="opt"><input type="checkbox" name="uw33[]" value="Bamboo or modal"><span>Bamboo or modal</span></label>
+<label class="opt"><input type="checkbox" name="uw33[]" value="Synthetic blends (nylon, spandex)"><span>Synthetic blends (nylon, spandex)</span></label>
+<label class="opt"><input type="checkbox" name="uw33[]" value="No preference"><span>No preference</span></label>
+</div>
+<input type="text" class="other" name="uw33_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-uw34">
+<p class="qtext">Have you ever stopped wearing something because of the fabric, separate from how it fit?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw34" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="uw34" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-uw34b">
+<p class="qtext">If yes, what was it about the fabric?</p>
+<textarea name="uw34b"></textarea>
+</div>
+<div class="q" id="q-uw35">
+<p class="qtext">Have you ever switched brands specifically because of what something was made of?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw35" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="uw35" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-uw35b">
+<p class="qtext">If yes, what did you switch to?</p>
+<input type="text" name="uw35b" autocomplete="off">
+</div>
+<div class="q" id="q-uw36">
+<p class="qtext">Have you ever had a skin reaction — irritation, itching, redness, chafing — to a material in your underwear?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="uw36[]" value="Yes, to a synthetic (elastane, nylon, polyester)"><span>Yes, to a synthetic (elastane, nylon, polyester)</span></label>
+<label class="opt"><input type="checkbox" name="uw36[]" value="Yes, to merino wool"><span>Yes, to merino wool</span></label>
+<label class="opt"><input type="checkbox" name="uw36[]" value="Yes, to silk"><span>Yes, to silk</span></label>
+<label class="opt"><input type="checkbox" name="uw36[]" value="Yes, to cotton"><span>Yes, to cotton</span></label>
+<label class="opt"><input type="checkbox" name="uw36[]" value="Yes, to a dye, detergent or fragrance"><span>Yes, to a dye, detergent or fragrance</span></label>
+<label class="opt"><input type="checkbox" name="uw36[]" value="Yes, but I don&#x27;t know what caused it"><span>Yes, but I don&#x27;t know what caused it</span></label>
+<label class="opt"><input type="checkbox" name="uw36[]" value="No, never"><span>No, never</span></label>
+</div>
+</div>
+<div class="q" id="q-uw37">
+<p class="qtext">If you have, is that a newer issue for you, or has it always been this way?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw37" value="It&#x27;s newer for me"><span>It&#x27;s newer for me</span></label>
+<label class="opt"><input type="radio" name="uw37" value="It&#x27;s always been this way"><span>It&#x27;s always been this way</span></label>
+<label class="opt"><input type="radio" name="uw37" value="Not sure"><span>Not sure</span></label>
+<label class="opt"><input type="radio" name="uw37" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+</div>
+<div class="q" id="q-uw38">
+<p class="qtext">How do you feel about elastic at the waist and legs?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw38" value="Fine as it is"><span>Fine as it is</span></label>
+<label class="opt"><input type="radio" name="uw38" value="I prefer it covered or encased"><span>I prefer it covered or encased</span></label>
+<label class="opt"><input type="radio" name="uw38" value="I prefer as little as possible"><span>I prefer as little as possible</span></label>
+<label class="opt"><input type="radio" name="uw38" value="I don&#x27;t notice it"><span>I don&#x27;t notice it</span></label>
+</div>
+</div>
+<div class="q" id="q-uw39">
+<p class="qtext">Has the way something has to be cared for — hand wash, no dryer — ever stopped you buying it?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw39" value="Yes, it has stopped me"><span>Yes, it has stopped me</span></label>
+<label class="opt"><input type="radio" name="uw39" value="It would stop me"><span>It would stop me</span></label>
+<label class="opt"><input type="radio" name="uw39" value="It doesn&#x27;t matter to me"><span>It doesn&#x27;t matter to me</span></label>
+</div>
+</div>
+<div class="q" id="q-uw40">
+<p class="qtext">How do you actually wash and dry your underwear?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw40" value="Machine wash, machine dry"><span>Machine wash, machine dry</span></label>
+<label class="opt"><input type="radio" name="uw40" value="Machine wash, hang dry"><span>Machine wash, hang dry</span></label>
+<label class="opt"><input type="radio" name="uw40" value="Hand wash"><span>Hand wash</span></label>
+<label class="opt"><input type="radio" name="uw40" value="A mix"><span>A mix</span></label>
+</div>
+</div>
+<div class="q" id="q-uw41">
+<p class="qtext">How long does a pair last before you replace it?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw41" value="Less than 6 months"><span>Less than 6 months</span></label>
+<label class="opt"><input type="radio" name="uw41" value="6–12 months"><span>6–12 months</span></label>
+<label class="opt"><input type="radio" name="uw41" value="1–2 years"><span>1–2 years</span></label>
+<label class="opt"><input type="radio" name="uw41" value="2 years or more"><span>2 years or more</span></label>
+<label class="opt"><input type="radio" name="uw41" value="Until it falls apart"><span>Until it falls apart</span></label>
+<label class="opt"><input type="radio" name="uw41" value="Not sure"><span>Not sure</span></label>
+</div>
+</div>
+<div class="q" id="q-uw42">
+<p class="qtext">What usually makes you retire a pair?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="uw42[]" value="Holes"><span>Holes</span></label>
+<label class="opt"><input type="checkbox" name="uw42[]" value="Stretched out or loose"><span>Stretched out or loose</span></label>
+<label class="opt"><input type="checkbox" name="uw42[]" value="Pilling or roughness"><span>Pilling or roughness</span></label>
+<label class="opt"><input type="checkbox" name="uw42[]" value="Staining"><span>Staining</span></label>
+<label class="opt"><input type="checkbox" name="uw42[]" value="It lost its shape"><span>It lost its shape</span></label>
+<label class="opt"><input type="checkbox" name="uw42[]" value="I just stopped liking them"><span>I just stopped liking them</span></label>
+</div>
+<input type="text" class="other" name="uw42_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<p class="eyebrow">Buying online</p>
+<div class="q" id="q-uw43">
+<p class="qtext">Have you bought underwear online in the past 12 months?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="uw43" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="uw43" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-uw44">
+<p class="qtext">Have you ever decided not to buy underwear online because you weren&#x27;t sure about size, or because it couldn&#x27;t be returned?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw44" value="Yes, because of size uncertainty"><span>Yes, because of size uncertainty</span></label>
+<label class="opt"><input type="radio" name="uw44" value="Yes, because intimates can&#x27;t be returned"><span>Yes, because intimates can&#x27;t be returned</span></label>
+<label class="opt"><input type="radio" name="uw44" value="Both"><span>Both</span></label>
+<label class="opt"><input type="radio" name="uw44" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-uw45">
+<p class="qtext">Have you returned or exchanged underwear in the past 12 months?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw45" value="Yes"><span>Yes</span></label>
+<label class="opt"><input type="radio" name="uw45" value="No"><span>No</span></label>
+<label class="opt"><input type="radio" name="uw45" value="I wasn&#x27;t allowed to"><span>I wasn&#x27;t allowed to</span></label>
+</div>
+</div>
+<div class="q" id="q-uw45b">
+<p class="qtext">If yes, why?</p>
+<textarea name="uw45b"></textarea>
+</div>
+<div class="q" id="q-uw46">
+<p class="qtext">Have you used a brand&#x27;s size quiz or fit finder?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="uw46" value="Yes, and it worked"><span>Yes, and it worked</span></label>
+<label class="opt"><input type="radio" name="uw46" value="Yes, and it didn&#x27;t"><span>Yes, and it didn&#x27;t</span></label>
+<label class="opt"><input type="radio" name="uw46" value="No"><span>No</span></label>
+<label class="opt"><input type="radio" name="uw46" value="I didn&#x27;t know that existed"><span>I didn&#x27;t know that existed</span></label>
+</div>
+</div>
+<div class="q"><p class="qtext">Anything here confusing, annoying, or missing an option that fits you?<small>The most useful box on the page</small></p><textarea name="feedback_underwear"></textarea></div>
+<div class="nav"><button type="button" class="ghost" data-back>Back</button><button type="button" data-next>Next</button></div>
+</section><section class="screen" data-step="br" data-cat="br" hidden>
+<p class="eyebrow">Part two</p>
+<h2>Your bras.</h2>
+<p class="lede">Every question is optional &mdash; skip anything you'd rather not answer.</p>
+<div class="q" id="q-br1">
+<p class="qtext">Which brand makes the bra you reach for first?</p>
+<input type="text" name="br1" autocomplete="off">
+<div class="opts">
+<label class="opt"><input type="radio" name="br1" value="I don&#x27;t know the brand"><span>I don&#x27;t know the brand</span></label>
+<label class="opt"><input type="radio" name="br1" value="There&#x27;s no label I can find"><span>There&#x27;s no label I can find</span></label>
+</div>
+</div>
+<div class="q" id="q-br2">
+<p class="qtext">What makes that one the one you reach for?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br2[]" value="It fits right"><span>It fits right</span></label>
+<label class="opt"><input type="checkbox" name="br2[]" value="Comfortable all day"><span>Comfortable all day</span></label>
+<label class="opt"><input type="checkbox" name="br2[]" value="It gives me the support I want"><span>It gives me the support I want</span></label>
+<label class="opt"><input type="checkbox" name="br2[]" value="It looks good under clothes"><span>It looks good under clothes</span></label>
+<label class="opt"><input type="checkbox" name="br2[]" value="It&#x27;s easy to put on"><span>It&#x27;s easy to put on</span></label>
+<label class="opt"><input type="checkbox" name="br2[]" value="The fabric feels good"><span>The fabric feels good</span></label>
+<label class="opt"><input type="checkbox" name="br2[]" value="It&#x27;s the only one that fits me well"><span>It&#x27;s the only one that fits me well</span></label>
+</div>
+<input type="text" class="other" name="br2_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-br3">
+<p class="qtext">Separately — what&#x27;s the best bra you&#x27;ve ever owned?</p>
+<input type="text" name="br3" autocomplete="off">
+<div class="opts">
+<label class="opt"><input type="radio" name="br3" value="Same as above"><span>Same as above</span></label>
+<label class="opt"><input type="radio" name="br3" value="Can&#x27;t think of one"><span>Can&#x27;t think of one</span></label>
+</div>
+</div>
+<div class="q" id="q-br4">
+<p class="qtext">Could you buy that bra again today?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br4" value="Yes, I&#x27;ve rebought it"><span>Yes, I&#x27;ve rebought it</span></label>
+<label class="opt"><input type="radio" name="br4" value="Yes, but I haven&#x27;t"><span>Yes, but I haven&#x27;t</span></label>
+<label class="opt"><input type="radio" name="br4" value="No, it&#x27;s discontinued"><span>No, it&#x27;s discontinued</span></label>
+<label class="opt"><input type="radio" name="br4" value="No, they stopped making my size"><span>No, they stopped making my size</span></label>
+<label class="opt"><input type="radio" name="br4" value="I don&#x27;t know"><span>I don&#x27;t know</span></label>
+</div>
+</div>
+<p class="eyebrow">Wearing &amp; replacing</p>
+<div class="q" id="q-br5">
+<p class="qtext">In a typical week, how many days do you wear a bra of any kind?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br5" value="0"><span>0</span></label>
+<label class="pill"><input type="radio" name="br5" value="1–2"><span>1–2</span></label>
+<label class="pill"><input type="radio" name="br5" value="3–4"><span>3–4</span></label>
+<label class="pill"><input type="radio" name="br5" value="5–6"><span>5–6</span></label>
+<label class="pill"><input type="radio" name="br5" value="7 — every day"><span>7 — every day</span></label>
+</div>
+</div>
+<div class="q" id="q-br6">
+<p class="qtext">Which best describes the bra you wear most often, day to day?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br6" value="Underwire or traditional structured bra"><span>Underwire or traditional structured bra</span></label>
+<label class="opt"><input type="radio" name="br6" value="Soft bra — no wire, minimal structure"><span>Soft bra — no wire, minimal structure</span></label>
+<label class="opt"><input type="radio" name="br6" value="Bralette"><span>Bralette</span></label>
+<label class="opt"><input type="radio" name="br6" value="T-shirt or molded bra"><span>T-shirt or molded bra</span></label>
+<label class="opt"><input type="radio" name="br6" value="Sports or activewear bra"><span>Sports or activewear bra</span></label>
+<label class="opt"><input type="radio" name="br6" value="Nursing bra"><span>Nursing bra</span></label>
+<label class="opt"><input type="radio" name="br6" value="I don&#x27;t regularly wear one"><span>I don&#x27;t regularly wear one</span></label>
+</div>
+<input type="text" class="other" name="br6_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-br7">
+<p class="qtext">How many bras do you own?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br7" value="1–2"><span>1–2</span></label>
+<label class="pill"><input type="radio" name="br7" value="3–5"><span>3–5</span></label>
+<label class="pill"><input type="radio" name="br7" value="6–10"><span>6–10</span></label>
+<label class="pill"><input type="radio" name="br7" value="11–20"><span>11–20</span></label>
+<label class="pill"><input type="radio" name="br7" value="21 or more"><span>21 or more</span></label>
+</div>
+</div>
+<div class="q" id="q-br8">
+<p class="qtext">How many do you actually wear in a typical month?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br8" value="All of them"><span>All of them</span></label>
+<label class="pill"><input type="radio" name="br8" value="Most of them"><span>Most of them</span></label>
+<label class="pill"><input type="radio" name="br8" value="Two or three"><span>Two or three</span></label>
+<label class="pill"><input type="radio" name="br8" value="Really just one"><span>Really just one</span></label>
+</div>
+</div>
+<div class="q" id="q-br9">
+<p class="qtext">How many bras in your drawer do you never wear?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br9" value="None"><span>None</span></label>
+<label class="pill"><input type="radio" name="br9" value="One or two"><span>One or two</span></label>
+<label class="pill"><input type="radio" name="br9" value="Three to five"><span>Three to five</span></label>
+<label class="pill"><input type="radio" name="br9" value="More than five"><span>More than five</span></label>
+</div>
+</div>
+<div class="q" id="q-br9b">
+<p class="qtext">Why don&#x27;t you wear them?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br9b[]" value="They never fit right"><span>They never fit right</span></label>
+<label class="opt"><input type="checkbox" name="br9b[]" value="Uncomfortable after a while"><span>Uncomfortable after a while</span></label>
+<label class="opt"><input type="checkbox" name="br9b[]" value="Wrong occasion or style"><span>Wrong occasion or style</span></label>
+<label class="opt"><input type="checkbox" name="br9b[]" value="Worn out"><span>Worn out</span></label>
+<label class="opt"><input type="checkbox" name="br9b[]" value="My size changed"><span>My size changed</span></label>
+<label class="opt"><input type="checkbox" name="br9b[]" value="Bought on sale and never liked them"><span>Bought on sale and never liked them</span></label>
+<label class="opt"><input type="checkbox" name="br9b[]" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+<input type="text" class="other" name="br9b_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-br10">
+<p class="qtext">How often do you wear a bra at home, or while working from home?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br10" value="Always"><span>Always</span></label>
+<label class="pill"><input type="radio" name="br10" value="Usually"><span>Usually</span></label>
+<label class="pill"><input type="radio" name="br10" value="Sometimes"><span>Sometimes</span></label>
+<label class="pill"><input type="radio" name="br10" value="Rarely"><span>Rarely</span></label>
+<label class="pill"><input type="radio" name="br10" value="Never"><span>Never</span></label>
+</div>
+</div>
+<div class="q" id="q-br11">
+<p class="qtext">Do you sleep in a bra?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br11" value="Always"><span>Always</span></label>
+<label class="pill"><input type="radio" name="br11" value="Sometimes"><span>Sometimes</span></label>
+<label class="pill"><input type="radio" name="br11" value="Never"><span>Never</span></label>
+</div>
+</div>
+<div class="q" id="q-br12">
+<p class="qtext">How long do you wear a bra before replacing it?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br12" value="Less than 6 months"><span>Less than 6 months</span></label>
+<label class="opt"><input type="radio" name="br12" value="6–12 months"><span>6–12 months</span></label>
+<label class="opt"><input type="radio" name="br12" value="1–2 years"><span>1–2 years</span></label>
+<label class="opt"><input type="radio" name="br12" value="2 years or more"><span>2 years or more</span></label>
+<label class="opt"><input type="radio" name="br12" value="Not sure"><span>Not sure</span></label>
+</div>
+</div>
+<div class="q" id="q-br13">
+<p class="qtext">What usually makes you retire a bra?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br13[]" value="The band stretched out"><span>The band stretched out</span></label>
+<label class="opt"><input type="checkbox" name="br13[]" value="The underwire pokes or bent"><span>The underwire pokes or bent</span></label>
+<label class="opt"><input type="checkbox" name="br13[]" value="The cups lost their shape"><span>The cups lost their shape</span></label>
+<label class="opt"><input type="checkbox" name="br13[]" value="The straps stretched"><span>The straps stretched</span></label>
+<label class="opt"><input type="checkbox" name="br13[]" value="Staining or discoloration"><span>Staining or discoloration</span></label>
+<label class="opt"><input type="checkbox" name="br13[]" value="My size changed"><span>My size changed</span></label>
+<label class="opt"><input type="checkbox" name="br13[]" value="The style stopped working for me"><span>The style stopped working for me</span></label>
+</div>
+<input type="text" class="other" name="br13_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<p class="eyebrow">Sizing</p>
+<div class="q" id="q-br14_band">
+<p class="qtext">What band size do you usually buy?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br14_band" value="28"><span>28</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="30"><span>30</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="32"><span>32</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="34"><span>34</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="36"><span>36</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="38"><span>38</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="40"><span>40</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="42"><span>42</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="44"><span>44</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="46"><span>46</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="48+"><span>48+</span></label>
+<label class="pill"><input type="radio" name="br14_band" value="I don&#x27;t know"><span>I don&#x27;t know</span></label>
+</div>
+</div>
+<div class="q" id="q-br14_cup">
+<p class="qtext">And what cup size?</p>
+<div class="opts grid">
+<label class="opt"><input type="radio" name="br14_cup" value="AA"><span>AA</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="A"><span>A</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="B"><span>B</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="C"><span>C</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="D"><span>D</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="DD / E"><span>DD / E</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="DDD / F"><span>DDD / F</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="G"><span>G</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="H"><span>H</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="I"><span>I</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="J or larger"><span>J or larger</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="I don&#x27;t know"><span>I don&#x27;t know</span></label>
+<label class="opt"><input type="radio" name="br14_cup" value="It varies by brand"><span>It varies by brand</span></label>
+</div>
+</div>
+<div class="q" id="q-br15">
+<p class="qtext">If you buy sports bras or bralettes sized S/M/L, what do you buy?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br15" value="XS"><span>XS</span></label>
+<label class="opt"><input type="radio" name="br15" value="S"><span>S</span></label>
+<label class="opt"><input type="radio" name="br15" value="M"><span>M</span></label>
+<label class="opt"><input type="radio" name="br15" value="L"><span>L</span></label>
+<label class="opt"><input type="radio" name="br15" value="XL"><span>XL</span></label>
+<label class="opt"><input type="radio" name="br15" value="XXL"><span>XXL</span></label>
+<label class="opt"><input type="radio" name="br15" value="I don&#x27;t buy those"><span>I don&#x27;t buy those</span></label>
+</div>
+</div>
+<div class="q" id="q-br16_rib">
+<p class="qtext">Which describes your rib cage?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br16_rib" value="Narrow"><span>Narrow</span></label>
+<label class="pill"><input type="radio" name="br16_rib" value="Average"><span>Average</span></label>
+<label class="pill"><input type="radio" name="br16_rib" value="Broad"><span>Broad</span></label>
+<label class="pill"><input type="radio" name="br16_rib" value="Not sure"><span>Not sure</span></label>
+</div>
+</div>
+<div class="q" id="q-br16_bust">
+<p class="qtext">And your bust, relative to your frame?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br16_bust" value="Small for my frame"><span>Small for my frame</span></label>
+<label class="opt"><input type="radio" name="br16_bust" value="Average"><span>Average</span></label>
+<label class="opt"><input type="radio" name="br16_bust" value="Large for my frame"><span>Large for my frame</span></label>
+<label class="opt"><input type="radio" name="br16_bust" value="Very large for my frame"><span>Very large for my frame</span></label>
+<label class="opt"><input type="radio" name="br16_bust" value="Not sure"><span>Not sure</span></label>
+</div>
+</div>
+<div class="q" id="q-br17">
+<p class="qtext">How do you know your bra size?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br17" value="I measured myself"><span>I measured myself</span></label>
+<label class="opt"><input type="radio" name="br17" value="A professional fitting"><span>A professional fitting</span></label>
+<label class="opt"><input type="radio" name="br17" value="A brand&#x27;s size quiz"><span>A brand&#x27;s size quiz</span></label>
+<label class="opt"><input type="radio" name="br17" value="Best guess"><span>Best guess</span></label>
+<label class="opt"><input type="radio" name="br17" value="I&#x27;ve worn the same size since I was a teenager"><span>I&#x27;ve worn the same size since I was a teenager</span></label>
+</div>
+</div>
+<div class="q" id="q-br18">
+<p class="qtext">How confident are you that it&#x27;s correct?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br18" value="Very confident"><span>Very confident</span></label>
+<label class="opt"><input type="radio" name="br18" value="Fairly confident"><span>Fairly confident</span></label>
+<label class="opt"><input type="radio" name="br18" value="Not very — it&#x27;s my best guess"><span>Not very — it&#x27;s my best guess</span></label>
+<label class="opt"><input type="radio" name="br18" value="Not sure"><span>Not sure</span></label>
+</div>
+</div>
+<div class="q" id="q-br19">
+<p class="qtext">When were you last fitted by a professional bra fitter?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br19" value="Within the past year"><span>Within the past year</span></label>
+<label class="opt"><input type="radio" name="br19" value="1–3 years ago"><span>1–3 years ago</span></label>
+<label class="opt"><input type="radio" name="br19" value="3–10 years ago"><span>3–10 years ago</span></label>
+<label class="opt"><input type="radio" name="br19" value="More than 10 years ago"><span>More than 10 years ago</span></label>
+<label class="opt"><input type="radio" name="br19" value="When I was a teenager"><span>When I was a teenager</span></label>
+<label class="opt"><input type="radio" name="br19" value="Never been fitted"><span>Never been fitted</span></label>
+<label class="opt"><input type="radio" name="br19" value="I don&#x27;t remember"><span>I don&#x27;t remember</span></label>
+</div>
+</div>
+<div class="q" id="q-br19b">
+<p class="qtext">Where was that fitting?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br19b" value="A specialty bra or lingerie shop"><span>A specialty bra or lingerie shop</span></label>
+<label class="opt"><input type="radio" name="br19b" value="A department store"><span>A department store</span></label>
+<label class="opt"><input type="radio" name="br19b" value="A mall chain — Victoria&#x27;s Secret or similar"><span>A mall chain — Victoria&#x27;s Secret or similar</span></label>
+<label class="opt"><input type="radio" name="br19b" value="An online or virtual fitting"><span>An online or virtual fitting</span></label>
+<label class="opt"><input type="radio" name="br19b" value="I don&#x27;t remember"><span>I don&#x27;t remember</span></label>
+<label class="opt"><input type="radio" name="br19b" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+</div>
+<div class="q" id="q-br20">
+<p class="qtext">Has your bra size changed in the past 12 months?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br20" value="Yes, band size"><span>Yes, band size</span></label>
+<label class="opt"><input type="radio" name="br20" value="Yes, cup size"><span>Yes, cup size</span></label>
+<label class="opt"><input type="radio" name="br20" value="Yes, both"><span>Yes, both</span></label>
+<label class="opt"><input type="radio" name="br20" value="No change that I know of"><span>No change that I know of</span></label>
+</div>
+</div>
+<div class="q" id="q-br21">
+<p class="qtext">Do you currently own bras in more than one size?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br21" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="br21" value="No"><span>No</span></label>
+<label class="pill"><input type="radio" name="br21" value="Not sure"><span>Not sure</span></label>
+</div>
+</div>
+<div class="q" id="q-br22">
+<p class="qtext">In the past 12 months, has your size kept you from buying a bra you wanted?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br22" value="Yes — my size wasn&#x27;t carried at all"><span>Yes — my size wasn&#x27;t carried at all</span></label>
+<label class="opt"><input type="radio" name="br22" value="Yes — my size was carried but sold out"><span>Yes — my size was carried but sold out</span></label>
+<label class="opt"><input type="radio" name="br22" value="No, this hasn&#x27;t happened to me"><span>No, this hasn&#x27;t happened to me</span></label>
+</div>
+</div>
+<div class="q" id="q-br23">
+<p class="qtext">Which of these apply to you, related to your size?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br23[]" value="My size is rarely carried or in stock"><span>My size is rarely carried or in stock</span></label>
+<label class="opt"><input type="checkbox" name="br23[]" value="I&#x27;ve sized up or down because the right size wasn&#x27;t available"><span>I&#x27;ve sized up or down because the right size wasn&#x27;t available</span></label>
+<label class="opt"><input type="checkbox" name="br23[]" value="I buy from more than one brand because no single brand covers my range"><span>I buy from more than one brand because no single brand covers my range</span></label>
+<label class="opt"><input type="checkbox" name="br23[]" value="I&#x27;ve had a bra altered or custom made"><span>I&#x27;ve had a bra altered or custom made</span></label>
+<label class="opt"><input type="checkbox" name="br23[]" value="None of these"><span>None of these</span></label>
+</div>
+</div>
+<div class="q" id="q-br23b">
+<p class="qtext">If you&#x27;ve sized up or down, was it mainly…</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br23b" value="Band size"><span>Band size</span></label>
+<label class="pill"><input type="radio" name="br23b" value="Cup size"><span>Cup size</span></label>
+<label class="pill"><input type="radio" name="br23b" value="Both"><span>Both</span></label>
+<label class="pill"><input type="radio" name="br23b" value="Not sure"><span>Not sure</span></label>
+<label class="pill"><input type="radio" name="br23b" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+</div>
+<div class="q" id="q-br24">
+<p class="qtext">Based on your experience, how well has standard band-and-cup sizing worked for your body?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br24" value="Very well"><span>Very well</span></label>
+<label class="opt"><input type="radio" name="br24" value="Somewhat"><span>Somewhat</span></label>
+<label class="opt"><input type="radio" name="br24" value="Not well"><span>Not well</span></label>
+<label class="opt"><input type="radio" name="br24" value="It doesn&#x27;t work for me at all"><span>It doesn&#x27;t work for me at all</span></label>
+</div>
+</div>
+<p class="eyebrow">What goes wrong</p>
+<div class="q" id="q-br25">
+<p class="qtext">Think about the bras you own but never reach for — what&#x27;s wrong with them?<small>Select all that apply &middot; Same as with underwear — sometimes a bra looked right and then lived in a drawer.</small></p>
+<div class="opts grid">
+<label class="opt"><input type="checkbox" name="br25[]" value="The band rides up"><span>The band rides up</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="The band is too tight at the size that fits my cup"><span>The band is too tight at the size that fits my cup</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="Straps dig into my shoulders"><span>Straps dig into my shoulders</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="Straps slip off"><span>Straps slip off</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="Straps are too short even let all the way out"><span>Straps are too short even let all the way out</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="Straps are too long even tightened all the way"><span>Straps are too long even tightened all the way</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="The cups gap or wrinkle"><span>The cups gap or wrinkle</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="I spill out over the top or sides"><span>I spill out over the top or sides</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="The center panel between the cups won&#x27;t lie flat against me"><span>The center panel between the cups won&#x27;t lie flat against me</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="The underwire pokes or bends"><span>The underwire pokes or bends</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="It chafes under the band"><span>It chafes under the band</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="My shoulders, neck or back hurt after wearing it"><span>My shoulders, neck or back hurt after wearing it</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="The sizing was nothing like the same size in another brand"><span>The sizing was nothing like the same size in another brand</span></label>
+<label class="opt"><input type="checkbox" name="br25[]" value="Nothing fits my shape"><span>Nothing fits my shape</span></label>
+</div>
+<input type="text" class="other" name="br25_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-br26">
+<p class="qtext">Of those, which is worst for you?</p>
+<input type="text" name="br26" autocomplete="off">
+</div>
+<div class="q" id="q-br27">
+<p class="qtext">Is there a fit problem you&#x27;ve never been able to find a bra to solve?</p>
+<textarea name="br27"></textarea>
+</div>
+<div class="q" id="q-br28">
+<p class="qtext">Have you ever bought a bra you knew didn&#x27;t fit right because it was the only option in your size?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br28" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="br28" value="No"><span>No</span></label>
+</div>
+</div>
+<p class="eyebrow">Support and comfort</p>
+<div class="q" id="q-br29">
+<p class="qtext">In the past 12 months, how often have you worn a sports or activewear bra as your everyday bra — not for exercise?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br29" value="Never"><span>Never</span></label>
+<label class="opt"><input type="radio" name="br29" value="Rarely — a few days a month"><span>Rarely — a few days a month</span></label>
+<label class="opt"><input type="radio" name="br29" value="Sometimes — 1–2 days a week"><span>Sometimes — 1–2 days a week</span></label>
+<label class="opt"><input type="radio" name="br29" value="Often — 3–4 days a week"><span>Often — 3–4 days a week</span></label>
+<label class="opt"><input type="radio" name="br29" value="Almost always — 5+ days a week"><span>Almost always — 5+ days a week</span></label>
+</div>
+</div>
+<div class="q" id="q-br30">
+<p class="qtext">If you do, why?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br30[]" value="More comfortable"><span>More comfortable</span></label>
+<label class="opt"><input type="checkbox" name="br30[]" value="More support"><span>More support</span></label>
+<label class="opt"><input type="checkbox" name="br30[]" value="No wires"><span>No wires</span></label>
+<label class="opt"><input type="checkbox" name="br30[]" value="Easier to put on"><span>Easier to put on</span></label>
+<label class="opt"><input type="checkbox" name="br30[]" value="It&#x27;s the only thing that fits me well"><span>It&#x27;s the only thing that fits me well</span></label>
+<label class="opt"><input type="checkbox" name="br30[]" value="I like how it looks"><span>I like how it looks</span></label>
+<label class="opt"><input type="checkbox" name="br30[]" value="Nothing else works for my size"><span>Nothing else works for my size</span></label>
+<label class="opt"><input type="checkbox" name="br30[]" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+<input type="text" class="other" name="br30_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-br31">
+<p class="qtext">Which is closer to the truth about your everyday bra?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br31" value="It&#x27;s what I actually want"><span>It&#x27;s what I actually want</span></label>
+<label class="opt"><input type="radio" name="br31" value="It&#x27;s the best compromise available to me"><span>It&#x27;s the best compromise available to me</span></label>
+<label class="opt"><input type="radio" name="br31" value="I haven&#x27;t thought about it that way"><span>I haven&#x27;t thought about it that way</span></label>
+</div>
+</div>
+<div class="q" id="q-br32">
+<p class="qtext">Does your rotation include either of these?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br32[]" value="A bra that&#x27;s comfortable but not supportive enough"><span>A bra that&#x27;s comfortable but not supportive enough</span></label>
+<label class="opt"><input type="checkbox" name="br32[]" value="A bra that&#x27;s supportive but uncomfortable"><span>A bra that&#x27;s supportive but uncomfortable</span></label>
+<label class="opt"><input type="checkbox" name="br32[]" value="Both, for different days"><span>Both, for different days</span></label>
+<label class="opt"><input type="checkbox" name="br32[]" value="Neither — my bras work"><span>Neither — my bras work</span></label>
+</div>
+</div>
+<div class="q" id="q-br33">
+<p class="qtext">Have you tried a soft or wire-free bra as your everyday bra?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br33" value="Yes, and I stuck with it"><span>Yes, and I stuck with it</span></label>
+<label class="opt"><input type="radio" name="br33" value="Yes, but I went back to underwire"><span>Yes, but I went back to underwire</span></label>
+<label class="opt"><input type="radio" name="br33" value="No, never tried"><span>No, never tried</span></label>
+<label class="opt"><input type="radio" name="br33" value="I don&#x27;t own underwire bras"><span>I don&#x27;t own underwire bras</span></label>
+</div>
+</div>
+<div class="q" id="q-br34">
+<p class="qtext">If you went back, why didn&#x27;t it stick?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br34[]" value="Not enough support"><span>Not enough support</span></label>
+<label class="opt"><input type="checkbox" name="br34[]" value="It didn&#x27;t hold its shape"><span>It didn&#x27;t hold its shape</span></label>
+<label class="opt"><input type="checkbox" name="br34[]" value="It looked wrong under clothes"><span>It looked wrong under clothes</span></label>
+<label class="opt"><input type="checkbox" name="br34[]" value="The sizing was off"><span>The sizing was off</span></label>
+<label class="opt"><input type="checkbox" name="br34[]" value="The fabric or feel"><span>The fabric or feel</span></label>
+<label class="opt"><input type="checkbox" name="br34[]" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+<input type="text" class="other" name="br34_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<p class="eyebrow">How a bra is built</p>
+<div class="q" id="q-br35">
+<p class="qtext">Which closure do you prefer?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br35" value="Back hook-and-eye"><span>Back hook-and-eye</span></label>
+<label class="opt"><input type="radio" name="br35" value="Front closure"><span>Front closure</span></label>
+<label class="opt"><input type="radio" name="br35" value="Pull-over, no closure"><span>Pull-over, no closure</span></label>
+<label class="opt"><input type="radio" name="br35" value="Several hook rows so I can adjust"><span>Several hook rows so I can adjust</span></label>
+<label class="opt"><input type="radio" name="br35" value="No preference"><span>No preference</span></label>
+</div>
+</div>
+<div class="q" id="q-br36">
+<p class="qtext">And straps?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br36" value="Standard adjustable"><span>Standard adjustable</span></label>
+<label class="opt"><input type="radio" name="br36" value="Wide straps"><span>Wide straps</span></label>
+<label class="opt"><input type="radio" name="br36" value="Convertible or racerback"><span>Convertible or racerback</span></label>
+<label class="opt"><input type="radio" name="br36" value="Thin straps"><span>Thin straps</span></label>
+<label class="opt"><input type="radio" name="br36" value="No preference"><span>No preference</span></label>
+</div>
+</div>
+<div class="q" id="q-br37">
+<p class="qtext">Which cup construction do you actually buy?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br37" value="Molded or padded"><span>Molded or padded</span></label>
+<label class="pill"><input type="radio" name="br37" value="Lightly lined"><span>Lightly lined</span></label>
+<label class="pill"><input type="radio" name="br37" value="Unlined"><span>Unlined</span></label>
+<label class="pill"><input type="radio" name="br37" value="I don&#x27;t care"><span>I don&#x27;t care</span></label>
+</div>
+</div>
+<div class="q" id="q-br37a">
+<p class="qtext">When you&#x27;re picking a bra for everyday wear, how much does it matter whether your nipples show through?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br37a" value="It&#x27;s one of the first things I check"><span>It&#x27;s one of the first things I check</span></label>
+<label class="opt"><input type="radio" name="br37a" value="It matters somewhat"><span>It matters somewhat</span></label>
+<label class="opt"><input type="radio" name="br37a" value="It doesn&#x27;t really matter to me"><span>It doesn&#x27;t really matter to me</span></label>
+<label class="opt"><input type="radio" name="br37a" value="I&#x27;d rather have less padding even if they show"><span>I&#x27;d rather have less padding even if they show</span></label>
+<label class="opt"><input type="radio" name="br37a" value="It depends on where I&#x27;m going or what I&#x27;m wearing"><span>It depends on where I&#x27;m going or what I&#x27;m wearing</span></label>
+</div>
+</div>
+<div class="q" id="q-br37b">
+<p class="qtext">Have you ever done any of these because of it?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br37b[]" value="Chosen a padded or molded bra mainly for coverage"><span>Chosen a padded or molded bra mainly for coverage</span></label>
+<label class="opt"><input type="checkbox" name="br37b[]" value="Kept or added removable pads"><span>Kept or added removable pads</span></label>
+<label class="opt"><input type="checkbox" name="br37b[]" value="Worn a camisole, undershirt or thicker top over it"><span>Worn a camisole, undershirt or thicker top over it</span></label>
+<label class="opt"><input type="checkbox" name="br37b[]" value="Changed what top I wore that day"><span>Changed what top I wore that day</span></label>
+<label class="opt"><input type="checkbox" name="br37b[]" value="Used nipple covers or petals"><span>Used nipple covers or petals</span></label>
+<label class="opt"><input type="checkbox" name="br37b[]" value="Avoided buying or returned a bra that didn&#x27;t give enough coverage"><span>Avoided buying or returned a bra that didn&#x27;t give enough coverage</span></label>
+<label class="opt"><input type="checkbox" name="br37b[]" value="None of these"><span>None of these</span></label>
+</div>
+</div>
+<div class="q" id="q-br38">
+<p class="qtext">Elastic against your skin — do you have a preference?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br38" value="I prefer it covered or encased"><span>I prefer it covered or encased</span></label>
+<label class="opt"><input type="radio" name="br38" value="It doesn&#x27;t matter"><span>It doesn&#x27;t matter</span></label>
+<label class="opt"><input type="radio" name="br38" value="I prefer as little elastic as possible"><span>I prefer as little elastic as possible</span></label>
+</div>
+</div>
+<div class="q" id="q-br39">
+<p class="qtext">Do you want a matching underwear option when you buy a bra?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br39" value="Usually"><span>Usually</span></label>
+<label class="pill"><input type="radio" name="br39" value="Sometimes"><span>Sometimes</span></label>
+<label class="pill"><input type="radio" name="br39" value="Never"><span>Never</span></label>
+</div>
+</div>
+<div class="q" id="q-br40">
+<p class="qtext">Which colors do you actually buy?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br40[]" value="Black"><span>Black</span></label>
+<label class="opt"><input type="checkbox" name="br40[]" value="A nude that matches my skin"><span>A nude that matches my skin</span></label>
+<label class="opt"><input type="checkbox" name="br40[]" value="White"><span>White</span></label>
+<label class="opt"><input type="checkbox" name="br40[]" value="Colors"><span>Colors</span></label>
+<label class="opt"><input type="checkbox" name="br40[]" value="Prints"><span>Prints</span></label>
+</div>
+</div>
+<p class="eyebrow">Buying &amp; spending</p>
+<div class="q" id="q-br41">
+<p class="qtext">Which bigger brands have you bought bras from in the past year?<small>Select all that apply</small></p>
+<div class="opts grid" data-shuffle="1">
+<label class="opt"><input type="checkbox" name="br41[]" value="GAP"><span>GAP</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="Uniqlo"><span>Uniqlo</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="Victoria&#x27;s Secret"><span>Victoria&#x27;s Secret</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="Aerie"><span>Aerie</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="Target brands"><span>Target brands</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="Calvin Klein"><span>Calvin Klein</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="Skims"><span>Skims</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="Lululemon"><span>Lululemon</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="Athleta"><span>Athleta</span></label>
+<label class="opt"><input type="checkbox" name="br41[]" value="None of these"><span>None of these</span></label>
+</div>
+</div>
+<div class="q" id="q-br42">
+<p class="qtext">And any independent or specialty brands?<small>Select all that apply</small></p>
+<div class="pill-row" data-shuffle="1">
+<label class="pill"><input type="checkbox" name="br42[]" value="ARQ"><span>ARQ</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Pact"><span>Pact</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Organic Basics"><span>Organic Basics</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Knix"><span>Knix</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Cuup"><span>Cuup</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="ThirdLove"><span>ThirdLove</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Evelyn &amp; Bobbie"><span>Evelyn &amp; Bobbie</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Base Range"><span>Base Range</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Negative"><span>Negative</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Hanro"><span>Hanro</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Hanky Panky"><span>Hanky Panky</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Natori"><span>Natori</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="Wacoal"><span>Wacoal</span></label>
+<label class="pill"><input type="checkbox" name="br42[]" value="None of these"><span>None of these</span></label>
+</div>
+<input type="text" class="other" name="br42_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-br43">
+<p class="qtext">Which brand was your most recent bra purchase?</p>
+<input type="text" name="br43" autocomplete="off">
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br43" value="I don&#x27;t remember"><span>I don&#x27;t remember</span></label>
+</div>
+</div>
+<div class="q" id="q-br44">
+<p class="qtext">When you buy a bra, is it usually for everyday wear or for a special occasion?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br44" value="Mostly everyday"><span>Mostly everyday</span></label>
+<label class="opt"><input type="radio" name="br44" value="Mostly special"><span>Mostly special</span></label>
+<label class="opt"><input type="radio" name="br44" value="Both, and I buy different bras for each"><span>Both, and I buy different bras for each</span></label>
+<label class="opt"><input type="radio" name="br44" value="Both, and the same bras do double duty"><span>Both, and the same bras do double duty</span></label>
+</div>
+</div>
+<div class="q" id="q-br45">
+<p class="qtext">What do you typically spend on an everyday bra?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br45" value="Under $20"><span>Under $20</span></label>
+<label class="pill"><input type="radio" name="br45" value="$20–39"><span>$20–39</span></label>
+<label class="pill"><input type="radio" name="br45" value="$40–59"><span>$40–59</span></label>
+<label class="pill"><input type="radio" name="br45" value="$60–79"><span>$60–79</span></label>
+<label class="pill"><input type="radio" name="br45" value="$80–99"><span>$80–99</span></label>
+<label class="pill"><input type="radio" name="br45" value="$100–149"><span>$100–149</span></label>
+<label class="pill"><input type="radio" name="br45" value="$150+"><span>$150+</span></label>
+</div>
+</div>
+<div class="q" id="q-br46">
+<p class="qtext">And on a special-occasion bra, if you buy those?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br46" value="Under $20"><span>Under $20</span></label>
+<label class="opt"><input type="radio" name="br46" value="$20–39"><span>$20–39</span></label>
+<label class="opt"><input type="radio" name="br46" value="$40–59"><span>$40–59</span></label>
+<label class="opt"><input type="radio" name="br46" value="$60–79"><span>$60–79</span></label>
+<label class="opt"><input type="radio" name="br46" value="$80–99"><span>$80–99</span></label>
+<label class="opt"><input type="radio" name="br46" value="$100–149"><span>$100–149</span></label>
+<label class="opt"><input type="radio" name="br46" value="$150+"><span>$150+</span></label>
+<label class="opt"><input type="radio" name="br46" value="I don&#x27;t buy those"><span>I don&#x27;t buy those</span></label>
+</div>
+</div>
+<div class="q" id="q-br47">
+<p class="qtext">What&#x27;s the most you&#x27;ve ever paid for a single bra?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br47" value="Under $20"><span>Under $20</span></label>
+<label class="pill"><input type="radio" name="br47" value="$20–39"><span>$20–39</span></label>
+<label class="pill"><input type="radio" name="br47" value="$40–59"><span>$40–59</span></label>
+<label class="pill"><input type="radio" name="br47" value="$60–79"><span>$60–79</span></label>
+<label class="pill"><input type="radio" name="br47" value="$80–99"><span>$80–99</span></label>
+<label class="pill"><input type="radio" name="br47" value="$100–149"><span>$100–149</span></label>
+<label class="pill"><input type="radio" name="br47" value="$150+"><span>$150+</span></label>
+</div>
+</div>
+<div class="q" id="q-br47b">
+<p class="qtext">Do you still wear it?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br47b" value="Yes"><span>Yes</span></label>
+<label class="opt"><input type="radio" name="br47b" value="No"><span>No</span></label>
+<label class="opt"><input type="radio" name="br47b" value="I don&#x27;t remember which one"><span>I don&#x27;t remember which one</span></label>
+</div>
+</div>
+<div class="q" id="q-br48">
+<p class="qtext">Roughly how much have you spent on bras in the past 12 months?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br48" value="Under $100"><span>Under $100</span></label>
+<label class="pill"><input type="radio" name="br48" value="$100–249"><span>$100–249</span></label>
+<label class="pill"><input type="radio" name="br48" value="$250–499"><span>$250–499</span></label>
+<label class="pill"><input type="radio" name="br48" value="$500–999"><span>$500–999</span></label>
+<label class="pill"><input type="radio" name="br48" value="$1,000 or more"><span>$1,000 or more</span></label>
+</div>
+</div>
+<div class="q" id="q-br49">
+<p class="qtext">About how many separate times did you buy a bra in the past 12 months?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br49" value="0"><span>0</span></label>
+<label class="pill"><input type="radio" name="br49" value="1–2"><span>1–2</span></label>
+<label class="pill"><input type="radio" name="br49" value="3–5"><span>3–5</span></label>
+<label class="pill"><input type="radio" name="br49" value="6–10"><span>6–10</span></label>
+<label class="pill"><input type="radio" name="br49" value="11 or more"><span>11 or more</span></label>
+</div>
+</div>
+<div class="q" id="q-br50">
+<p class="qtext">Where did you buy the most recent one?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br50" value="The brand&#x27;s own website"><span>The brand&#x27;s own website</span></label>
+<label class="opt"><input type="radio" name="br50" value="Amazon"><span>Amazon</span></label>
+<label class="opt"><input type="radio" name="br50" value="A department store"><span>A department store</span></label>
+<label class="opt"><input type="radio" name="br50" value="A specialty boutique or bra shop"><span>A specialty boutique or bra shop</span></label>
+<label class="opt"><input type="radio" name="br50" value="A big box or mass retailer"><span>A big box or mass retailer</span></label>
+<label class="opt"><input type="radio" name="br50" value="Secondhand or thrifted"><span>Secondhand or thrifted</span></label>
+<label class="opt"><input type="radio" name="br50" value="Somewhere else"><span>Somewhere else</span></label>
+</div>
+</div>
+<div class="q" id="q-br51">
+<p class="qtext">What actually triggered that purchase?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br51" value="The old one failed"><span>The old one failed</span></label>
+<label class="opt"><input type="radio" name="br51" value="My size changed"><span>My size changed</span></label>
+<label class="opt"><input type="radio" name="br51" value="An event or occasion"><span>An event or occasion</span></label>
+<label class="opt"><input type="radio" name="br51" value="I saw an ad or a post"><span>I saw an ad or a post</span></label>
+<label class="opt"><input type="radio" name="br51" value="There was a sale"><span>There was a sale</span></label>
+<label class="opt"><input type="radio" name="br51" value="A friend recommended it"><span>A friend recommended it</span></label>
+<label class="opt"><input type="radio" name="br51" value="I had a fitting"><span>I had a fitting</span></label>
+</div>
+<input type="text" class="other" name="br51_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-br52">
+<p class="qtext">Where did you first hear about that brand?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br52" value="Instagram or social media"><span>Instagram or social media</span></label>
+<label class="opt"><input type="radio" name="br52" value="A friend or family member"><span>A friend or family member</span></label>
+<label class="opt"><input type="radio" name="br52" value="An online search"><span>An online search</span></label>
+<label class="opt"><input type="radio" name="br52" value="A lingerie or bra shop"><span>A lingerie or bra shop</span></label>
+<label class="opt"><input type="radio" name="br52" value="Saw it in a store"><span>Saw it in a store</span></label>
+<label class="opt"><input type="radio" name="br52" value="An ad"><span>An ad</span></label>
+<label class="opt"><input type="radio" name="br52" value="An influencer or content creator"><span>An influencer or content creator</span></label>
+<label class="opt"><input type="radio" name="br52" value="Word of mouth"><span>Word of mouth</span></label>
+<label class="opt"><input type="radio" name="br52" value="I don&#x27;t remember"><span>I don&#x27;t remember</span></label>
+</div>
+<input type="text" class="other" name="br52_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q" id="q-br53">
+<p class="qtext">Has price ever stopped you from buying a bra you otherwise wanted?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br53" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="br53" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-br53b">
+<p class="qtext">If yes, roughly what was it priced at?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br53b" value="Under $20"><span>Under $20</span></label>
+<label class="pill"><input type="radio" name="br53b" value="$20–39"><span>$20–39</span></label>
+<label class="pill"><input type="radio" name="br53b" value="$40–59"><span>$40–59</span></label>
+<label class="pill"><input type="radio" name="br53b" value="$60–79"><span>$60–79</span></label>
+<label class="pill"><input type="radio" name="br53b" value="$80–99"><span>$80–99</span></label>
+<label class="pill"><input type="radio" name="br53b" value="$100–149"><span>$100–149</span></label>
+<label class="pill"><input type="radio" name="br53b" value="$150+"><span>$150+</span></label>
+<label class="pill"><input type="radio" name="br53b" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+</div>
+<p class="eyebrow">Materials, care &amp; returns</p>
+<div class="q" id="q-br54">
+<p class="qtext">Have you ever had a skin reaction to a material in a bra?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br54[]" value="Yes, to a synthetic (elastane, nylon, polyester)"><span>Yes, to a synthetic (elastane, nylon, polyester)</span></label>
+<label class="opt"><input type="checkbox" name="br54[]" value="Yes, to merino wool"><span>Yes, to merino wool</span></label>
+<label class="opt"><input type="checkbox" name="br54[]" value="Yes, to silk"><span>Yes, to silk</span></label>
+<label class="opt"><input type="checkbox" name="br54[]" value="Yes, to cotton"><span>Yes, to cotton</span></label>
+<label class="opt"><input type="checkbox" name="br54[]" value="Yes, to the underwire casing"><span>Yes, to the underwire casing</span></label>
+<label class="opt"><input type="checkbox" name="br54[]" value="Yes, to the band elastic"><span>Yes, to the band elastic</span></label>
+<label class="opt"><input type="checkbox" name="br54[]" value="Yes, to a dye, detergent or fragrance"><span>Yes, to a dye, detergent or fragrance</span></label>
+<label class="opt"><input type="checkbox" name="br54[]" value="Yes, but I don&#x27;t know what caused it"><span>Yes, but I don&#x27;t know what caused it</span></label>
+<label class="opt"><input type="checkbox" name="br54[]" value="No, never"><span>No, never</span></label>
+</div>
+</div>
+<div class="q" id="q-br54b">
+<p class="qtext">If you have, is that newer for you, or has it always been this way?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br54b" value="It&#x27;s newer for me"><span>It&#x27;s newer for me</span></label>
+<label class="opt"><input type="radio" name="br54b" value="It&#x27;s always been this way"><span>It&#x27;s always been this way</span></label>
+<label class="opt"><input type="radio" name="br54b" value="Not sure"><span>Not sure</span></label>
+<label class="opt"><input type="radio" name="br54b" value="Doesn&#x27;t apply"><span>Doesn&#x27;t apply</span></label>
+</div>
+</div>
+<div class="q" id="q-br55">
+<p class="qtext">Have you ever stopped wearing a bra because of the fabric, separate from fit?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br55" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="br55" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-br56">
+<p class="qtext">Have you ever switched bra brands because of what it was made of?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br56" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="br56" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-br56b">
+<p class="qtext">If yes, what did you switch to?</p>
+<input type="text" name="br56b" autocomplete="off">
+</div>
+<div class="q" id="q-br57">
+<p class="qtext">Have you worn wool against bare skin — a base layer, a sweater with nothing under it, socks?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="br57[]" value="Yes, and it felt fine"><span>Yes, and it felt fine</span></label>
+<label class="opt"><input type="checkbox" name="br57[]" value="Yes, and it itched"><span>Yes, and it itched</span></label>
+<label class="opt"><input type="checkbox" name="br57[]" value="Yes — some wool was fine, some itched"><span>Yes — some wool was fine, some itched</span></label>
+<label class="opt"><input type="checkbox" name="br57[]" value="No, never"><span>No, never</span></label>
+</div>
+</div>
+<div class="q" id="q-br58">
+<p class="qtext">Would hand-wash-only or no-dryer care stop you buying a bra?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br58" value="Yes, it has stopped me before"><span>Yes, it has stopped me before</span></label>
+<label class="opt"><input type="radio" name="br58" value="It would stop me"><span>It would stop me</span></label>
+<label class="opt"><input type="radio" name="br58" value="It doesn&#x27;t matter to me"><span>It doesn&#x27;t matter to me</span></label>
+</div>
+</div>
+<div class="q" id="q-br59">
+<p class="qtext">Have you decided not to buy a bra online because of size uncertainty or the return policy?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br59" value="Yes, because of size uncertainty"><span>Yes, because of size uncertainty</span></label>
+<label class="opt"><input type="radio" name="br59" value="Yes, because of returns"><span>Yes, because of returns</span></label>
+<label class="opt"><input type="radio" name="br59" value="Both"><span>Both</span></label>
+<label class="opt"><input type="radio" name="br59" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-br60">
+<p class="qtext">Have you returned or exchanged a bra in the past 12 months?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="br60" value="Yes"><span>Yes</span></label>
+<label class="pill"><input type="radio" name="br60" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="q" id="q-br60b">
+<p class="qtext">If yes, why?</p>
+<textarea name="br60b"></textarea>
+</div>
+<div class="q" id="q-br61">
+<p class="qtext">Have you used a brand&#x27;s fit quiz or virtual fitting for a bra?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br61" value="Yes, and it worked"><span>Yes, and it worked</span></label>
+<label class="opt"><input type="radio" name="br61" value="Yes, and it didn&#x27;t"><span>Yes, and it didn&#x27;t</span></label>
+<label class="opt"><input type="radio" name="br61" value="No"><span>No</span></label>
+<label class="opt"><input type="radio" name="br61" value="I didn&#x27;t know that existed"><span>I didn&#x27;t know that existed</span></label>
+</div>
+</div>
+<div class="q" id="q-br62">
+<p class="qtext">Think of the last bra you decided not to buy after trying it on or seriously considering it. What was the main reason?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="br62" value="It didn&#x27;t fit right"><span>It didn&#x27;t fit right</span></label>
+<label class="opt"><input type="radio" name="br62" value="I didn&#x27;t like the fabric or material"><span>I didn&#x27;t like the fabric or material</span></label>
+<label class="opt"><input type="radio" name="br62" value="Price"><span>Price</span></label>
+<label class="opt"><input type="radio" name="br62" value="Style"><span>Style</span></label>
+<label class="opt"><input type="radio" name="br62" value="This hasn&#x27;t happened to me"><span>This hasn&#x27;t happened to me</span></label>
+</div>
+<input type="text" class="other" name="br62_other" placeholder="Other — tell us" autocomplete="off">
+</div>
+<div class="q"><p class="qtext">Anything here confusing, annoying, or missing an option that fits you?<small>The most useful box on the page</small></p><textarea name="feedback_bras"></textarea></div>
+<div class="nav"><button type="button" class="ghost" data-back>Back</button><button type="button" data-next>Next</button></div>
+</section><section class="screen" data-step="about" data-cat="all" hidden>
+<p class="eyebrow">Nearly there</p>
+<h2>A little about you.</h2>
+<p class="lede">Nothing here is required.</p>
+<div class="q" id="q-d1">
+<p class="qtext">Age range</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="d1" value="18–24"><span>18–24</span></label>
+<label class="opt"><input type="radio" name="d1" value="25–34"><span>25–34</span></label>
+<label class="opt"><input type="radio" name="d1" value="35–44"><span>35–44</span></label>
+<label class="opt"><input type="radio" name="d1" value="45–54"><span>45–54</span></label>
+<label class="opt"><input type="radio" name="d1" value="55–64"><span>55–64</span></label>
+<label class="opt"><input type="radio" name="d1" value="65+"><span>65+</span></label>
+<label class="opt"><input type="radio" name="d1" value="Prefer not to say"><span>Prefer not to say</span></label>
+</div>
+</div>
+<div class="q" id="q-d2">
+<p class="qtext">Where do you live?<small>State or ZIP is plenty.</small></p>
+<input type="text" name="d2" autocomplete="off">
+</div>
+<div class="q" id="q-d3">
+<p class="qtext">Which best describes it?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="d3" value="A major metro"><span>A major metro</span></label>
+<label class="opt"><input type="radio" name="d3" value="A suburb of a major metro"><span>A suburb of a major metro</span></label>
+<label class="opt"><input type="radio" name="d3" value="A small city or town"><span>A small city or town</span></label>
+<label class="opt"><input type="radio" name="d3" value="Rural"><span>Rural</span></label>
+</div>
+</div>
+<div class="q" id="q-d4">
+<p class="qtext">Household income</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="d4" value="Under $50K"><span>Under $50K</span></label>
+<label class="opt"><input type="radio" name="d4" value="$50–99K"><span>$50–99K</span></label>
+<label class="opt"><input type="radio" name="d4" value="$100–149K"><span>$100–149K</span></label>
+<label class="opt"><input type="radio" name="d4" value="$150–199K"><span>$150–199K</span></label>
+<label class="opt"><input type="radio" name="d4" value="$200K+"><span>$200K+</span></label>
+<label class="opt"><input type="radio" name="d4" value="Prefer not to say"><span>Prefer not to say</span></label>
+</div>
+</div>
+<div class="q" id="q-d5">
+<p class="qtext">And your own individual income?</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="d5" value="Under $50K"><span>Under $50K</span></label>
+<label class="opt"><input type="radio" name="d5" value="$50–99K"><span>$50–99K</span></label>
+<label class="opt"><input type="radio" name="d5" value="$100–149K"><span>$100–149K</span></label>
+<label class="opt"><input type="radio" name="d5" value="$150–199K"><span>$150–199K</span></label>
+<label class="opt"><input type="radio" name="d5" value="$200K+"><span>$200K+</span></label>
+<label class="opt"><input type="radio" name="d5" value="Prefer not to say"><span>Prefer not to say</span></label>
+</div>
+</div>
+<div class="q" id="q-d6">
+<p class="qtext">Work setting</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="d6" value="Fully remote"><span>Fully remote</span></label>
+<label class="opt"><input type="radio" name="d6" value="Hybrid"><span>Hybrid</span></label>
+<label class="opt"><input type="radio" name="d6" value="Fully in person"><span>Fully in person</span></label>
+<label class="opt"><input type="radio" name="d6" value="Not currently working"><span>Not currently working</span></label>
+<label class="opt"><input type="radio" name="d6" value="Retired"><span>Retired</span></label>
+<label class="opt"><input type="radio" name="d6" value="Prefer not to say"><span>Prefer not to say</span></label>
+</div>
+</div>
+<div class="q" id="q-d7">
+<p class="qtext">In the past 3 years, have any of these applied to you?<small>Select all that apply</small></p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="d7[]" value="Pregnancy"><span>Pregnancy</span></label>
+<label class="opt"><input type="checkbox" name="d7[]" value="Postpartum or nursing"><span>Postpartum or nursing</span></label>
+<label class="opt"><input type="checkbox" name="d7[]" value="Perimenopause or menopause"><span>Perimenopause or menopause</span></label>
+<label class="opt"><input type="checkbox" name="d7[]" value="A significant weight change"><span>A significant weight change</span></label>
+<label class="opt"><input type="checkbox" name="d7[]" value="Surgery affecting chest or torso"><span>Surgery affecting chest or torso</span></label>
+<label class="opt"><input type="checkbox" name="d7[]" value="Gender-affirming transition"><span>Gender-affirming transition</span></label>
+<label class="opt"><input type="checkbox" name="d7[]" value="None of these"><span>None of these</span></label>
+<label class="opt"><input type="checkbox" name="d7[]" value="Prefer not to say"><span>Prefer not to say</span></label>
+</div>
+</div>
+<div class="q" id="q-d8">
+<p class="qtext">Do you sew or alter your own clothes?</p>
+<div class="pill-row">
+<label class="pill"><input type="radio" name="d8" value="Regularly"><span>Regularly</span></label>
+<label class="pill"><input type="radio" name="d8" value="Occasionally"><span>Occasionally</span></label>
+<label class="pill"><input type="radio" name="d8" value="No"><span>No</span></label>
+</div>
+</div>
+<div class="placeholder"><b>Optional, and personal</b>These last two are optional, and we know they&#x27;re personal. Sizing in this industry is a mess, and knowing height and weight alongside the size you actually buy is the only way for us to build a size range that fits real bodies instead of guessing. Skip them if you&#x27;d rather not.</div>
+<div class="q" id="q-d9">
+<p class="qtext">Height</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="d9" value="Under 5&#x27;0&quot;"><span>Under 5&#x27;0&quot;</span></label>
+<label class="opt"><input type="radio" name="d9" value="5&#x27;0&quot;–5&#x27;2&quot;"><span>5&#x27;0&quot;–5&#x27;2&quot;</span></label>
+<label class="opt"><input type="radio" name="d9" value="5&#x27;3&quot;–5&#x27;5&quot;"><span>5&#x27;3&quot;–5&#x27;5&quot;</span></label>
+<label class="opt"><input type="radio" name="d9" value="5&#x27;6&quot;–5&#x27;8&quot;"><span>5&#x27;6&quot;–5&#x27;8&quot;</span></label>
+<label class="opt"><input type="radio" name="d9" value="5&#x27;9&quot;–5&#x27;11&quot;"><span>5&#x27;9&quot;–5&#x27;11&quot;</span></label>
+<label class="opt"><input type="radio" name="d9" value="6&#x27;0&quot; or taller"><span>6&#x27;0&quot; or taller</span></label>
+<label class="opt"><input type="radio" name="d9" value="Prefer not to say"><span>Prefer not to say</span></label>
+</div>
+</div>
+<div class="q" id="q-d10">
+<p class="qtext">Weight</p>
+<div class="opts grid">
+<label class="opt"><input type="radio" name="d10" value="Under 100 lb"><span>Under 100 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="100–119 lb"><span>100–119 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="120–129 lb"><span>120–129 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="130–139 lb"><span>130–139 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="140–149 lb"><span>140–149 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="150–159 lb"><span>150–159 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="160–169 lb"><span>160–169 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="170–179 lb"><span>170–179 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="180–189 lb"><span>180–189 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="190–199 lb"><span>190–199 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="200–209 lb"><span>200–209 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="210–219 lb"><span>210–219 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="220–239 lb"><span>220–239 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="240–259 lb"><span>240–259 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="260–279 lb"><span>260–279 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="280–299 lb"><span>280–299 lb</span></label>
+<label class="opt"><input type="radio" name="d10" value="300 lb or more"><span>300 lb or more</span></label>
+<label class="opt"><input type="radio" name="d10" value="Prefer not to say"><span>Prefer not to say</span></label>
+</div>
+</div>
+<div class="nav"><button type="button" class="ghost" data-back>Back</button><button type="button" data-next>Next</button></div>
+</section>
+    <section class="screen" data-step="last" data-cat="all" hidden>
+  <p class="eyebrow">Last questions</p>
+  <h2>Thank you, thank you &mdash; truly.</h2>
+  <p class="lede">Here's where we actually are right now: fabric samples from Japan and
+  Portugal just arrived on our expert patternmaker's sewing table, and our underwear and
+  bralette patterns are close. We are producing them in natural fibers, with as little
+  elastane as we can get away with. Honestly, we cannot wait for you to see them!</p>
+  <p class="signoff">With hope and love,<br>Ashley + Olivia</p>
+
+  <div class="q"><p class="qtext">Keep up with our progress.<small>We'll update you monthly</small></p>
+  <input type="email" id="optinEmail" name="optin_updates" placeholder="Your email"></div>
+
+  <div class="q" id="qCall"><p class="qtext">Would you be open to a short 15&ndash;20 minute call
+  with us?<small class="askEmail">Leave your email if yes</small></p>
+  <input type="email" class="emailField" name="optin_call_email" placeholder="Your email">
+  <div class="pill-row yn" hidden>
+    <label class="pill"><input type="radio" name="optin_call" value="Yes"><span>Yes</span></label>
+    <label class="pill"><input type="radio" name="optin_call" value="No"><span>No</span></label>
+  </div></div>
+
+  <div class="q" id="qTest"><p class="qtext">Would you be willing to wear-test prototypes in your
+  size and tell us what you think?<small class="askEmail">Leave your email if yes</small></p>
+  <input type="email" class="emailField" name="optin_weartest_email" placeholder="Your email">
+  <div class="pill-row yn" hidden>
+    <label class="pill"><input type="radio" name="optin_weartest" value="Yes"><span>Yes</span></label>
+    <label class="pill"><input type="radio" name="optin_weartest" value="No"><span>No</span></label>
+  </div></div>
+
+  <div class="q"><p class="qtext">How was the survey itself?<small>Too long, confusing,
+  repetitive, a question that annoyed you, one we should have asked</small></p>
+  <textarea name="feedback_survey" placeholder="Be blunt. This is the part we most need."></textarea></div>
+
+  <div class="q"><p class="qtext">Anything else you want to tell us?</p>
+  <textarea name="feedback_general"></textarea></div>
+
+  <div class="nav"><button type="button" class="ghost" data-back>Back</button>
+  <button type="submit">Submit</button></div>
+</section>
+
+<section class="screen" data-step="final" data-cat="all" hidden>
+  <p class="eyebrow">Done</p>
+  <h2>You're a gem.</h2>
+  <p class="lede">That's it. We'll be in touch with updates!</p>
+  <p class="signoff">With hope and love,<br>Ashley + Olivia</p>
+  <div class="nav"><span></span>
+  <button type="button" class="link" id="shareBtn">Copy the link to share</button></div>
+</section>
+  </form>
+</div>
+<script>
+(function(){
+  var form=document.getElementById('survey');
+  var screens=Array.prototype.slice.call(document.querySelectorAll('.screen'));
+  var bar=document.getElementById('bar');
+  var lbl=document.getElementById('stepLabel');
+  var current='welcome';
+
+  // Shuffle the brand lists only, so order doesn't bias what gets picked.
+  // Every other list has a real order (sizes, prices, ages) and is left alone.
+  form.querySelectorAll('[data-shuffle]').forEach(function(box){
+    var kids=Array.prototype.slice.call(box.children);
+    var pinned=kids.filter(function(k){return /none of these|other/i.test(k.textContent)});
+    var rest=kids.filter(function(k){return pinned.indexOf(k)<0});
+    for(var i=rest.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=rest[i];rest[i]=rest[j];rest[j]=t;}
+    rest.concat(pinned).forEach(function(k){box.appendChild(k)});
+  });
+
+  function path(){
+    var s=form.querySelector('input[name=scope]:checked');
+    var v=s?s.value:'both';
+    return screens.map(function(el){return el.dataset.step}).filter(function(step){
+      var cat=document.querySelector('.screen[data-step="'+step+'"]').dataset.cat;
+      if(cat==='uw') return v!=='bras';
+      if(cat==='br') return v!=='underwear';
+      return true;
+    });
+  }
+  function show(step){
+    current=step;
+    screens.forEach(function(el){ el.hidden = el.dataset.step!==step; });
+    var p=path(), i=p.indexOf(step);
+    var last=p.indexOf('final');
+    var pct = i<0 ? 100 : Math.min(100,(i/Math.max(1,last))*100);
+    bar.style.width=pct+'%';
+    lbl.textContent = (i>0 && i<last) ? ('Step '+i+' of '+(last-1)) : 'Survey';
+    window.scrollTo({top:0,behavior:'auto'});
+  }
+  form.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    if(b.hasAttribute('data-next')){
+      var p=path(); show(p[p.indexOf(current)+1]);
+    } else if(b.hasAttribute('data-back')){
+      var p2=path(); show(p2[Math.max(0,p2.indexOf(current)-1)]);
+    } else if(b.dataset.goto){ show(b.dataset.goto); }
+  });
+
+  // ---- Response collection -------------------------------------------
+  // Google Sheets endpoint (Apps Script Web App, same one the short survey uses).
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxVO_InQDO0HAJAM7YfuuuhTv7U0p1jENPdTQKwfiukNzkE7EZ5CwEWJLr41ye3oqE6aA/exec';
+  var rid='r_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+  var started=Date.now();
+
+  function collect(skip){
+    var fd=new FormData(form), out={};
+    fd.forEach(function(v,k){
+      if(v==='') return;
+      if(skip && skip.test(k)) return;
+      if(out[k]!==undefined){ out[k]=[].concat(out[k],v).join('; '); } else out[k]=v;
+    });
+    return out;
+  }
+  function send(payload,label){
+    payload.response_id=rid; payload.part=label;
+    payload.submitted_at=new Date().toISOString();
+    payload.minutes_taken=Math.round((Date.now()-started)/6000)/10;
+    return fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)}).catch(function(){});
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=form.querySelector('[data-step=last] button[type=submit]');
+    btn.disabled=true; btn.textContent='Sending…';
+    send(collect(null),'main').then(function(){
+      show('final'); btn.disabled=false; btn.textContent='Submit';
+    });
+  });
+
+  // Ask for an email once. After that, the follow-ups become yes/no.
+  var mainEmail=document.getElementById('optinEmail');
+  function syncOptins(){
+    var has=/.+@.+\..+/.test(mainEmail.value.trim());
+    ['qCall','qTest'].forEach(function(id){
+      var q=document.getElementById(id);
+      q.querySelector('.emailField').hidden=has;
+      q.querySelector('.yn').hidden=!has;
+      q.querySelector('.askEmail').textContent=has?'Yes or no is plenty — we have your email':'Leave your email if yes';
+      if(has) q.querySelector('.emailField').value='';
+      else q.querySelectorAll('.yn input').forEach(function(r){r.checked=false});
+    });
+  }
+  mainEmail.addEventListener('input',syncOptins);
+  syncOptins();
+
+  // "None of these" clears its siblings, and vice versa.
+  form.addEventListener('change',function(e){
+    var t=e.target; if(t.type!=='checkbox') return;
+    var group=form.querySelectorAll('input[type=checkbox][name="'+t.name+'"]');
+    var isNone=/^(none|prefer not|no, never|doesn't apply|i don't)/i.test(t.value);
+    if(isNone && t.checked){ group.forEach(function(c){ if(c!==t) c.checked=false; }); }
+    else if(t.checked){ group.forEach(function(c){
+      if(/^(none|prefer not|no, never|doesn't apply)/i.test(c.value)) c.checked=false; }); }
+  });
+  var share=document.getElementById('shareBtn');
+  share.addEventListener('click',function(){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(location.href).then(
+        function(){share.textContent='Link copied'},function(){});
+    }
+  });
+
+  show('welcome');
+})();
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.q').forEach(function(q){
+    var head=q.querySelector('.qtext');
+    if(!head) return;
+
+    var row=document.createElement('div');
+    row.className='qhead';
+    head.parentNode.insertBefore(row,head);
+    row.appendChild(head);
+
+    var btn=document.createElement('button');
+    btn.type='button';
+    btn.className='qplus';
+    btn.setAttribute('aria-label','Add a comment on this question');
+    btn.textContent='+';
+    row.appendChild(btn);
+
+    var baseInput=q.querySelector('input,select,textarea');
+    var baseName=baseInput?baseInput.name.replace(/\[\]$/,''):'';
+    var note=document.createElement('div');
+    note.className='qnote';
+    var ta=document.createElement('textarea');
+    ta.name=baseName?baseName+'_comment':'';
+    ta.placeholder='Comment on this question…';
+    ta.maxLength=300;
+    note.appendChild(ta);
+    q.appendChild(note);
+
+    btn.addEventListener('click',function(){
+      var open=note.classList.toggle('open');
+      btn.textContent=open?'×':'+';
+      btn.classList.toggle('active',open);
+      if(open) ta.focus();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

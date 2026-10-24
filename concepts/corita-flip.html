@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hope Arouses — Corita: Flip Stack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=Archivo:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #f1ecdf;
+    color: #1a1a1a;
+    font-family: 'Archivo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+    display: flex; justify-content: space-between;
+    padding: 28px 5vw;
+    mix-blend-mode: difference;
+  }
+  .mark { font-size: 12px; letter-spacing: 0.25em; font-weight: 700; color: #f1ecdf; }
+  a.contact {
+    font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: #f1ecdf; text-decoration: none; font-weight: 700;
+    border-bottom: 2px solid transparent;
+  }
+  a.contact:hover { border-color: #f1ecdf; }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 60px;
+  }
+
+  .band {
+    position: absolute;
+    top: 14%;
+    left: -10vw;
+    width: 120vw;
+    transform: rotate(-3deg);
+    background: #e2402c;
+    color: #f1ecdf;
+    padding: 14px 0;
+    white-space: nowrap;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.6rem, 4.2vw, 3.2rem);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+  .band span { padding: 0 40px; }
+
+  .stack {
+    position: relative;
+    margin-top: 14vh;
+    text-align: center;
+    line-height: 0.78;
+  }
+  .word {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    font-size: clamp(4.5rem, 15vw, 11rem);
+    display: block;
+  }
+  .hope { color: #1a1a1a; position: relative; z-index: 2; }
+  .arouses {
+    color: #2c4ca0;
+    transform: rotate(180deg) translateY(2%);
+    position: relative;
+    z-index: 1;
+    margin-top: -0.12em;
+  }
+
+  .quote-credit {
+    margin-top: 6vh;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+    max-width: 480px;
+    text-align: center;
+    color: #1a1a1a;
+    line-height: 1.35;
+  }
+  .quote-credit .name { display: block; margin-top: 10px; font-size: 0.85em; opacity: 0.75; }
+
+  .signup {
+    margin-top: 6vh;
+    display: inline-flex;
+    background: #e8b930;
+    padding: 4px;
+    transform: rotate(-1deg);
+  }
+  .signup input {
+    background: #f1ecdf;
+    border: none; outline: none;
+    padding: 14px 18px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    width: 230px;
+    color: #1a1a1a;
+  }
+  .signup input::placeholder { color: rgba(26,26,26,0.5); }
+  .signup button {
+    background: #1a1a1a;
+    color: #f1ecdf;
+    border: none;
+    padding: 0 24px;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .eyebrow {
+    margin-top: 28px;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.08em;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #e2402c;
+  }
+
+  .contact-section {
+    min-height: 60vh;
+    background: #2c4ca0;
+    color: #f1ecdf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .label {
+    position: fixed; bottom: 20px; left: 20px; z-index: 30;
+    font-size: 10px; letter-spacing: 0.1em; color: #1a1a1a; background: #f1ecdf;
+    padding: 4px 8px; text-transform: uppercase; font-family: 'Archivo';
+  }
+</style>
+</head>
+<body>
+<div class="label">Corita — Flip Stack</div>
+<header>
+  <div class="mark">HOPE&nbsp;AROUSES</div>
+  <a class="contact" href="#contact">Contact</a>
+</header>
+<section class="hero">
+  <div class="band"><span>a passion for the possible &nbsp;·&nbsp; a passion for the possible &nbsp;·&nbsp; a passion for the possible &nbsp;·</span></div>
+  <div class="stack">
+    <span class="word hope">Hope</span>
+    <span class="word arouses">Arouses</span>
+  </div>
+  <div class="eyebrow">Coming 2027</div>
+  <p class="quote-credit">
+    "Hope arouses, more than anything else can arouse, a passion for the possible."
+    <span class="name">— William Sloane Coffin</span>
+  </p>
+  <div class="signup">
+    <input type="email" placeholder="your email">
+    <button>Notify Me</button>
+  </div>
+</section>
+<section class="contact-section" id="contact">— contact block placeholder —</section>
+</body>
+</html>

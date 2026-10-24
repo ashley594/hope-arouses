@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hope Arouses — Corita: Stacked Action</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@500;700;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #f4f1e8;
+    color: #1a1a1a;
+    font-family: 'Archivo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+    display: flex; justify-content: flex-end;
+    padding: 28px 5vw;
+  }
+  a.contact {
+    font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: #1a1a1a; text-decoration: none; font-weight: 700;
+    border-bottom: 2px solid transparent;
+  }
+  a.contact:hover { border-color: #1a1a1a; }
+
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 0 0;
+  }
+
+  .stack {
+    position: relative;
+    padding: 0 5vw;
+  }
+  .line {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    line-height: 0.86;
+    font-size: clamp(3.2rem, 11vw, 8rem);
+    white-space: nowrap;
+  }
+  .line.hope { color: #2c4ca0; transform: rotate(-1deg); }
+  .line.arouses { color: #d4291b; transform: rotate(1deg); margin-top: -0.06em; margin-left: 4%; }
+
+  .aside {
+    position: absolute;
+    right: 3vw;
+    top: 8%;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #e8b930;
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+  }
+
+  .band {
+    min-height: 70vh;
+    background: #d4291b;
+    padding: 56px 5vw 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 28px;
+  }
+  .band .updates-heading {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #f4f1e8;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+  }
+
+  .signup {
+    display: inline-flex;
+  }
+  .signup input {
+    background: #f4f1e8; border: none; outline: none;
+    padding: 14px 18px; font-family: 'Archivo'; font-weight: 500; font-size: 14px;
+    width: 220px; color: #1a1a1a;
+  }
+  .signup input::placeholder { color: rgba(26,26,26,0.5); }
+  .signup button {
+    background: #1a1a1a; color: #f4f1e8; border: none;
+    padding: 0 22px; font-family: 'Archivo'; font-weight: 900; font-size: 12px;
+    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  }
+
+  .eyebrow {
+    padding: 20px 5vw 60px;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #2c4ca0;
+  }
+  .label {
+    position: fixed; bottom: 20px; left: 20px; z-index: 30;
+    font-size: 10px; letter-spacing: 0.1em; background: #1a1a1a; color: #f4f1e8;
+    padding: 4px 8px; text-transform: uppercase; font-family: 'Archivo';
+  }
+</style>
+</head>
+<body>
+<div class="label">Corita — Stacked Action</div>
+<header>
+  <a class="contact" href="#contact">Contact</a>
+</header>
+<section class="hero">
+  <div class="stack">
+    <div class="line hope">Hope</div>
+    <div class="line arouses">Arouses</div>
+    <div class="aside">the possible</div>
+  </div>
+  <div class="eyebrow">Coming 2027</div>
+</section>
+<section class="band" id="contact">
+  <div class="updates-heading">Get Updates</div>
+  <div class="signup">
+    <input type="email" placeholder="your email">
+    <button>Sign Up</button>
+  </div>
+</section>
+</body>
+</html>
