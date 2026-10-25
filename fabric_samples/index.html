@@ -84,6 +84,10 @@ thead tr.groups th.g-start{border-left:0}
 .hbtn:hover{background:var(--hover)}
 .gtoggle{display:inline-flex;align-items:center;gap:6px;height:100%;border:0;background:none;padding:0;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;white-space:nowrap}
 .gtoggle:hover{color:var(--fg)}
+thead tr.groups th{overflow:visible}
+.gtoggle{position:sticky;left:var(--sticky-left,172px)}
+th.pk .gtoggle{position:static}
+@media (max-width:640px){.gtoggle{left:62px}}
 .gtoggle .chev{font-size:9px;width:9px;letter-spacing:0}
 .hbtn.stubbtn{color:var(--muted);font-weight:400;font-size:12px}
 td.stub{background:repeating-linear-gradient(135deg,transparent 0 6px,var(--line) 6px 7px)}
@@ -230,18 +234,18 @@ var FABRIC_FIELDS = [
   {k:'address',label:'Company address',type:'text',group:'Company',w:240},
   {k:'otherContacts',label:'Other contacts',type:'long',group:'Company',w:260},
   {k:'composition',label:'Composition (as tagged)',type:'comp',group:'Composition',w:280},
-  {k:'cotton',label:'Cotton',type:'number',unit:'%',group:'Composition',w:84},
-  {k:'cottonType',label:'Cotton type',type:'select',group:'Composition',w:116,options:['Organic','Pima','Supima','Organic Supima','Compact','Conventional']},
-  {k:'silk',label:'Silk',type:'number',unit:'%',group:'Composition',w:76},
-  {k:'silkType',label:'Silk type',type:'select',group:'Composition',w:108,options:['Mulberry','Spun','Noil']},
-  {k:'wool',label:'Wool',type:'number',unit:'%',group:'Composition',w:76},
-  {k:'woolType',label:'Wool type',type:'select',group:'Composition',w:108,options:['Merino','Merino (superwash)']},
-  {k:'lyocell',label:'Lyocell',type:'number',unit:'%',group:'Composition',w:84},
-  {k:'linen',label:'Linen',type:'number',unit:'%',group:'Composition',w:76},
-  {k:'bamboo',label:'Bamboo',type:'number',unit:'%',group:'Composition',w:86},
-  {k:'polyamide',label:'Polyamide',type:'number',unit:'%',group:'Composition',w:100},
-  {k:'polyester',label:'Polyester',type:'number',unit:'%',group:'Composition',w:96},
-  {k:'elastane',label:'Elastane',type:'number',unit:'%',group:'Composition',w:90},
+  {k:'cotton',label:'Cotton',type:'number',unit:'%',group:'Fiber breakdown',w:84},
+  {k:'cottonType',label:'Cotton type',type:'select',group:'Fiber breakdown',w:116,options:['Organic','Pima','Supima','Organic Supima','Compact','Conventional']},
+  {k:'silk',label:'Silk',type:'number',unit:'%',group:'Fiber breakdown',w:76},
+  {k:'silkType',label:'Silk type',type:'select',group:'Fiber breakdown',w:108,options:['Mulberry','Spun','Noil']},
+  {k:'wool',label:'Wool',type:'number',unit:'%',group:'Fiber breakdown',w:76},
+  {k:'woolType',label:'Wool type',type:'select',group:'Fiber breakdown',w:108,options:['Merino','Merino (superwash)']},
+  {k:'lyocell',label:'Lyocell',type:'number',unit:'%',group:'Fiber breakdown',w:84},
+  {k:'linen',label:'Linen',type:'number',unit:'%',group:'Fiber breakdown',w:76},
+  {k:'bamboo',label:'Bamboo',type:'number',unit:'%',group:'Fiber breakdown',w:86},
+  {k:'polyamide',label:'Polyamide',type:'number',unit:'%',group:'Fiber breakdown',w:100},
+  {k:'polyester',label:'Polyester',type:'number',unit:'%',group:'Fiber breakdown',w:96},
+  {k:'elastane',label:'Elastane',type:'number',unit:'%',group:'Fiber breakdown',w:90},
   {k:'weight',label:'Weight',type:'number',unit:'g/m²',group:'Construction',w:104},
   {k:'weightClass',label:'Weight class',type:'computed',group:'Construction',w:112},
   {k:'width',label:'Width',type:'number',unit:'cm',group:'Construction',w:90},
@@ -756,6 +760,8 @@ function render(){
   fs.forEach(function(f){ var c = el('col'); c.style.width = f.w+'px'; cg.appendChild(c); });
   var ca = el('col'); ca.style.width='44px'; cg.appendChild(ca);
   t.style.width = (52 + 44 + fs.reduce(function(s,f){ return s + f.w; }, 0)) + 'px';
+  var pkf = fs.filter(function(f){ return f.pk; })[0];
+  t.style.setProperty('--sticky-left', (52 + (pkf ? pkf.w : 0) + 10) + 'px');
   t.appendChild(cg);
 
   var thead = el('thead'), gr = el('tr','groups'), fr = el('tr','fields');
