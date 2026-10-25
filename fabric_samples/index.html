@@ -213,13 +213,14 @@ var FIBERS = [['cotton','Cotton','--f-cotton'],['silk','Silk','--f-silk'],['wool
 var BASE = [
   {k:'sample',label:'Sample #',type:'text',group:'Sample',w:110,pk:true},
   {k:'verdict',label:'Verdict',type:'select',group:'Sample',w:104,options:['Love','Like','Archive'],colors:{Love:0,Like:1,Archive:6}},
-  {k:'use',label:'Intended use',type:'multi',group:'Sample',w:200,options:['Underwear','Bralette','Underwire','Activewear'],colors:{Underwear:4,Bralette:0,Underwire:3,Activewear:2}},
+  {k:'use',label:'Intended use',type:'multi',group:'Sample',w:200,options:['Underwear','Underwear gusset','Bralette','Underwire','Activewear'],colors:{Underwear:4,'Underwear gusset':6,Bralette:0,Underwire:3,Activewear:2}},
   {k:'article',label:'Article code',type:'text',group:'Sample',w:210,mono:true},
-  {k:'mill',label:'Company',type:'select',group:'Company',w:120,options:['NGS']},
-  {k:'line',label:'Collection',type:'select',group:'Company',w:178,options:['Knitting the future','Knitting a green future']},
+  {k:'mill',label:'Company',type:'select',group:'Company',w:200,options:['NGS','Willy Hermann – Superfine']},
+  {k:'line',label:'Collection',type:'select',group:'Company',w:178,options:['Knitting the future','Knitting a green future','Superfine']},
   {k:'contactName',label:'Contact',type:'text',group:'Company',w:150},
   {k:'contactEmail',label:'Contact email',type:'text',group:'Company',w:200},
   {k:'contactPhone',label:'Contact phone',type:'text',group:'Company',w:140},
+  {k:'address',label:'Company address',type:'text',group:'Company',w:240},
   {k:'composition',label:'Composition (as tagged)',type:'comp',group:'Composition',w:280},
   {k:'cotton',label:'Cotton',type:'number',unit:'%',group:'Composition',w:84},
   {k:'cottonType',label:'Cotton type',type:'select',group:'Composition',w:116,options:['Organic','Pima','Supima','Organic Supima','Conventional']},
@@ -241,6 +242,7 @@ var BASE = [
   {k:'stretch',label:'Stretch & recovery',type:'rating',group:'Hand feel',w:140},
   {k:'opacity',label:'Opacity',type:'rating',group:'Hand feel',w:100},
   {k:'feel',label:'Feel notes',type:'long',group:'Hand feel',w:260},
+  {k:'certs',label:'Certifications',type:'multi',group:'Sourcing',w:190,options:['OEKO-TEX Standard 100','GOTS','GRS']},
   {k:'price',label:'Price / m',type:'text',group:'Sourcing',w:96},
   {k:'moq',label:'MOQ',type:'text',group:'Sourcing',w:96},
   {k:'lead',label:'Lead time',type:'text',group:'Sourcing',w:100},
@@ -250,6 +252,8 @@ var BASE = [
 ];
 
 function seedRow(id,o){ return Object.assign({id:id,u:0,mill:'NGS',status:'Received',structure:'Single jersey'},o); }
+var WH = {mill:'Willy Hermann – Superfine',line:'Superfine',structure:'',use:['Underwear gusset'],certs:['OEKO-TEX Standard 100'],
+  contactEmail:'office@willy-hermann.com',contactPhone:'+43 5574 6754 0',address:'Oberer Achdamm 10, A-6971 Hard, Austria'};
 var SEED = [
   seedRow('s59661',{sample:'59661',verdict:'Love',article:'JL130COPIMASEDLY28',line:'Knitting the future',composition:'83% CO Pima · 9% Silk · 8% EA',cotton:83,cottonType:'Pima',silk:9,elastane:8,weight:130,width:135,gauge:28}),
   seedRow('s59699',{sample:'59699',verdict:'Like',article:'JL181LALY28',line:'Knitting the future',composition:'96% WO · 4% EA',wool:96,elastane:4,weight:180,width:145,gauge:28}),
@@ -269,7 +273,10 @@ var SEED = [
   seedRow('s57502',{sample:'57502',verdict:'Archive',article:'JL120SEDMULBLAMER28NGS',line:'Knitting the future',composition:'50% Silk · 50% WO',silk:50,silkType:'Mulberry',wool:50,woolType:'Merino',weight:120,width:140,gauge:28}),
   seedRow('s59700',{sample:'59700',verdict:'Archive',article:'JL201LALY28',line:'Knitting the future',composition:'90% WO · 10% EA',wool:90,elastane:10,weight:200,width:150,gauge:28}),
   seedRow('s33454',{sample:'33454',verdict:'Archive',article:'JL155SUPIMALY28',line:'Knitting the future',composition:'95% CO Supima · 5% EA',cotton:95,cottonType:'Supima',elastane:5,weight:165,width:170,gauge:28,notes:'Tag says 165 g/m², article code says 155.'}),
-  seedRow('s52358',{sample:'52358',verdict:'Archive',article:'JL190SUPIMALY28',line:'Knitting the future',composition:'95% CO Supima · 5% EA',cotton:95,cottonType:'Supima',elastane:5,weight:190,width:175,gauge:28})
+  seedRow('s52358',{sample:'52358',verdict:'Archive',article:'JL190SUPIMALY28',line:'Knitting the future',composition:'95% CO Supima · 5% EA',cotton:95,cottonType:'Supima',elastane:5,weight:190,width:175,gauge:28}),
+  // Gusset options
+  seedRow('wh015285',Object.assign({sample:'015285',article:'015285-Y000-000',composition:'100% Cotton',cotton:100,weight:105,width:175,gauge:44,notes:'Gauge E44 is printed on this card.'},WH)),
+  seedRow('wh010718',Object.assign({sample:'010718',article:'010718-0000-000',composition:'100% Cotton',cotton:100,weight:120,width:160},WH))
 ];
 
 var state, view = 'All', query = '', sort = null, openId = null, dirty = false, pushing = false;
