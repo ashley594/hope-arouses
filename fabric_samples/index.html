@@ -258,7 +258,7 @@ var FABRIC_FIELDS = [
   {k:'quote',label:'Quote ref',type:'text',group:'Sourcing',w:210},
   {k:'moq',label:'MOQ',type:'text',group:'Sourcing',w:130},
   {k:'lead',label:'Lead time',type:'text',group:'Sourcing',w:100},
-  {k:'status',label:'Status',type:'select',group:'Sourcing',w:150,options:['Received','Requesting more','Testing','Ordered yardage','Not pursuing'],colors:{'Received':7,'Requesting more':1,'Testing':3,'Ordered yardage':2,'Not pursuing':5}},
+  {k:'status',label:'Status',type:'select',group:'Sourcing',w:150,options:['Received','Monica','Requesting more','Testing','Ordered yardage','Not pursuing'],colors:{'Received':7,'Monica':4,'Requesting more':1,'Testing':3,'Ordered yardage':2,'Not pursuing':5}},
   {k:'metAt',label:'Met at',type:'text',group:'Sourcing',w:210},
   {k:'received',label:'Received',type:'date',group:'Sourcing',w:130},
   {k:'notes',label:'Notes',type:'long',group:'Sourcing',w:260}
@@ -271,7 +271,7 @@ var NGS = {mill:'NGS',contactName:'Renato Carvalho',contactEmail:'renato.carvalh
   moq:'300 m/color (+30% below)', metAt:'Première Vision Paris, Sep 2026'};
 // NGS quote REQ 2026/112 (2 Sep 2026): EUR per metre, ex-works, indicative
 var NGSQ = {quote:'NGS REQ 2026/112 · 2 Sep 2026'};
-var WH_BASE = {mill:'Willy Hermann – Superfine',line:'Superfine',certs:['OEKO-TEX Standard 100','OEKO-TEX STeP'],
+var WH_BASE = {u:3,status:'Monica',mill:'Willy Hermann – Superfine',line:'Superfine',certs:['OEKO-TEX Standard 100','OEKO-TEX STeP'],
   contactName:'Claudia Hurnaus',contactEmail:'claudia.hurnaus@willy-hermann.com',contactPhone:'+43 5574 6754 0',
   address:'Willy Hermann – SUPERFINE GmbH & Co KG, Oberer Achdamm 10, A-6971 Hard, Austria · office@willy-hermann.com',
   otherContacts:'Met at the Paris trade show, Sep 2026:\n• Patricia Dietrich (Willy Hermann) – p.dietrich@willy-hermann.com\n• Kara Attea (KMW Textiles) – kara@kmwtextiles.com · 917-214-5655 · 415 Grand Street, Suite E1905, New York, NY 10002\n• Jacqueline Cozzo (KMW Textiles) – jacqueline@kmwtextiles.com\n• Daniel Barrett (KMW Textiles) – Daniel@kmwtextiles.com',
@@ -283,6 +283,7 @@ function wh(ref,structure,width,weight,composition,fib,extra){
   var o = Object.assign({sample: parts[0]+(extra && extra.variant ? '-'+parts[2] : ''),article:ref,structure:structure,width:width,weight:weight,composition:composition},WH_BASE,fib,extra||{});
   if(tbc){ o.price = 'TBC'; o.moq = 'TBC'; }
   delete o.tbc; delete o.variant;
+  o.u = WH_BASE.u;
   return seedRow('wh'+ref.replace(/-/g,''),o);
 }
 var ICHIMEN = {mill:'Ichimen',line:'',status:'Received',contactPhone:'+81 3-3404-2311 · fax +81 3-3475-5722',
