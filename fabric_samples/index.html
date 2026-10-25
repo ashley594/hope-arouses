@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Hope Arouses — Fabric Samples</title>
+<title>Hope Arouses — Samples</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&display=swap">
 <style>
@@ -58,6 +58,11 @@ h1{font-size:22px;font-weight:500;margin:0;letter-spacing:.01em}
 .tab[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
 .tab b{font-weight:400;opacity:.6;margin-left:4px}
 .spacer{flex:1}
+.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:8px;padding:2px;gap:2px}
+.seg button{border:0;background:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-weight:500;color:var(--muted)}
+.seg button:hover{color:var(--fg)}
+.seg button[aria-selected="true"]{background:var(--head);color:var(--fg);box-shadow:0 0 0 1px var(--line-strong)}
+.seg button b{font-weight:400;opacity:.6;margin-left:4px}
 .search{border:1px solid var(--line-strong);background:var(--surface);border-radius:6px;padding:6px 10px;font:inherit;color:inherit;width:200px;max-width:100%}
 .search:focus{outline:2px solid var(--ring);outline-offset:-1px;border-color:transparent}
 .btn{border:1px solid var(--line-strong);background:var(--surface);border-radius:6px;padding:6px 11px;cursor:pointer;font-weight:500;white-space:nowrap}
@@ -178,13 +183,14 @@ td:focus-within{box-shadow:inset 0 0 0 2px var(--ring);background:var(--surface)
     <span class="crumb">Internal · Sourcing</span>
   </header>
   <div class="titlebar">
-    <h1>Fabric Samples</h1>
+    <h1>Samples</h1>
+    <div class="seg" id="seg" role="tablist" aria-label="Section"></div>
     <span class="sync" id="sync"><i></i><span>Saved on this device</span></span>
   </div>
   <div class="toolbar">
     <div class="tabs" id="tabs"></div>
     <div class="spacer"></div>
-    <input class="search" id="search" type="search" placeholder="Search samples…" aria-label="Search samples">
+    <input class="search" id="search" type="search" placeholder="Search…" aria-label="Search">
     <button class="btn" id="export">Export CSV</button>
     <button class="btn primary" id="add">+ New sample</button>
   </div>
@@ -205,12 +211,12 @@ td:focus-within{box-shadow:inset 0 0 0 2px var(--ring);background:var(--surface)
 // Paste the Google Apps Script web-app URL here to share edits across everyone (see fabric-samples-sync.gs).
 // Left empty, edits save only in this browser.
 var SYNC_URL = '';
-var KEY = 'ha-fabric-samples-v1';
+var KEY = 'ha-fabric-samples-v1', BASE, SEED;
 
 var ICON = {text:'A',number:'#',select:'◉',multi:'≡',long:'¶',date:'▦',rating:'●',comp:'◐',computed:'ƒ'};
 var FIBERS = [['cotton','Cotton','--f-cotton'],['silk','Silk','--f-silk'],['wool','Wool','--f-wool'],['lyocell','Lyocell','--f-lyocell'],['linen','Linen','--f-linen'],['bamboo','Bamboo','--f-bamboo'],['polyamide','Polyamide','--f-polyamide'],['polyester','Polyester','--f-polyester'],['elastane','Elastane','--f-elastane']];
 
-var BASE = [
+var FABRIC_FIELDS = [
   {k:'sample',label:'Sample #',type:'text',group:'Sample',w:110,pk:true},
   {k:'verdict',label:'Verdict',type:'select',group:'Sample',w:104,options:['Love','Like','Archive'],colors:{Love:0,Like:1,Archive:6}},
   {k:'use',label:'Intended use',type:'multi',group:'Sample',w:200,options:['Underwear','Underwear gusset','Thong','Boyshort','Bralette','Underwire','Bra cup','Bra cup lining','Bra band / wing','Bra strap','Sports bra','Activewear','Base layer','Camisole','Tank / undershirt','Bodysuit','Slip','Nightgown','Pajamas','Loungewear','Shapewear','Binding / trim'],
@@ -279,7 +285,7 @@ function wh(ref,structure,width,weight,composition,fib,extra){
   delete o.tbc; delete o.variant;
   return seedRow('wh'+ref.replace(/-/g,''),o);
 }
-var SEED = [
+var FABRIC_SEED = [
   seedRow('s59661',{sample:'59661',verdict:'Love',article:'JL130COPIMASEDLY28',line:'Knitting the future',composition:'83% CO Pima · 9% Silk · 8% EA',cotton:83,cottonType:'Pima',silk:9,elastane:8,weight:130,width:135,gauge:28}),
   seedRow('s59699',{price:'€12.72',quote:NGSQ.quote,sample:'59699',verdict:'Like',article:'JL181LALY28',line:'Knitting the future',composition:'96% WO · 4% EA',wool:96,elastane:4,weight:180,width:145,gauge:28}),
   seedRow('s58953',{sample:'58953',verdict:'Love',article:'JL190SEDMULB28NGS',line:'Knitting the future',composition:'100% Silk',silk:100,silkType:'Mulberry',weight:190,width:145,gauge:28}),
@@ -337,6 +343,58 @@ var SEED = [
   wh('042779-0000-330-000','Rib',33,160,'70% Merino Wool sw / 30% Silk',{wool:70,woolType:'Merino (superwash)',silk:30},{variant:1,tbc:1,notes:'Narrow rib, 33 cm wide.'})
 ];
 
+// ---------- trims & components ----------
+var TRIM_FIELDS = [
+  {k:'item',label:'Item',type:'text',group:'Item',w:300,pk:true},
+  {k:'verdict',label:'Verdict',type:'select',group:'Item',w:104,options:['Love','Like','Archive'],colors:{Love:0,Like:1,Archive:6}},
+  {k:'type',label:'Component',type:'multi',group:'Item',w:240,options:['Elastic','Plush-back elastic','Picot / lingerie elastic','Strap elastic','Stretch tape / binding','Ribbon','Lace','Rings','Sliders','Hooks','Hook & eye tape','Front closure','Underwire','Underwire channeling','Boning','Foam cups / padding','Bows & ornaments','Labels','Thread','Cord & cord ends']},
+  Object.assign({}, FABRIC_FIELDS.filter(function(f){ return f.k==='use'; })[0], {group:'Item'}),
+  {k:'article',label:'Article / ref',type:'text',group:'Item',w:150,mono:true},
+  {k:'mill',label:'Supplier',type:'select',group:'Supplier',w:150,options:['Shindo','Huay Accessories']},
+  {k:'contactName',label:'Contact',type:'text',group:'Supplier',w:150},
+  {k:'contactTitle',label:'Title',type:'text',group:'Supplier',w:170},
+  {k:'contactEmail',label:'Contact email',type:'text',group:'Supplier',w:210},
+  {k:'contactPhone',label:'Contact phone',type:'text',group:'Supplier',w:230},
+  {k:'address',label:'Address',type:'text',group:'Supplier',w:260},
+  {k:'website',label:'Website',type:'text',group:'Supplier',w:200},
+  {k:'otherContacts',label:'Other contacts',type:'long',group:'Supplier',w:240},
+  {k:'supplies',label:'What they supply',type:'long',group:'Supplier',w:300},
+  {k:'composition',label:'Composition',type:'text',group:'Specs',w:200},
+  {k:'width',label:'Width',type:'number',unit:'mm',group:'Specs',w:90},
+  {k:'size',label:'Size',type:'text',group:'Specs',w:110},
+  {k:'finish',label:'Finish / plating',type:'text',group:'Specs',w:150},
+  {k:'stretch',label:'Stretch & recovery',type:'rating',group:'Specs',w:140},
+  {k:'softness',label:'Softness',type:'rating',group:'Feel',w:100},
+  {k:'feel',label:'Feel notes',type:'long',group:'Feel',w:240},
+  {k:'certs',label:'Certifications',type:'multi',group:'Sourcing',w:190,options:['OEKO-TEX Standard 100','OEKO-TEX STeP','GOTS','GRS']},
+  {k:'price',label:'Price',type:'text',group:'Sourcing',w:96},
+  {k:'moq',label:'MOQ',type:'text',group:'Sourcing',w:110},
+  {k:'lead',label:'Lead time',type:'text',group:'Sourcing',w:100},
+  {k:'status',label:'Status',type:'select',group:'Sourcing',w:150,options:['Contact only','Requesting samples','Received','Testing','Ordered','Not pursuing'],colors:{'Contact only':7,'Requesting samples':1,'Received':6,'Testing':3,'Ordered':2,'Not pursuing':5}},
+  {k:'metAt',label:'Met at',type:'text',group:'Sourcing',w:180},
+  {k:'received',label:'Received',type:'date',group:'Sourcing',w:130},
+  {k:'notes',label:'Notes',type:'long',group:'Sourcing',w:260}
+];
+var TRIM_SEED = [
+  {id:'t-shindo',u:1,item:'Shindo – elastics, stretch tapes & ribbons',type:['Elastic','Stretch tape / binding','Ribbon','Cord & cord ends'],
+   mill:'Shindo',contactName:'Shannon Cole',contactTitle:'Assistant Sales Manager',contactEmail:'coles@shindo.com',
+   contactPhone:'(212) 868-9311 ext. 113 · fax (212) 868-9751',address:'Shindo USA Inc., 162 West 36th Street, New York, NY 10018',
+   website:'shindo.com · catalog: sicen.shindo.com',status:'Contact only',
+   supplies:'Japanese trims maker (S.I.C. brand). Per their website and S.I.C. catalog:\n• Stretch tapes / elastics: grosgrain stretch tape (80% poly / 20% PU, 6–24 mm), satin stretch tape (recommended for innerwear and camisole straps, 6–12 mm), thin satin stretch tape (6–30 mm), lace and frill stretch tapes for innerwear (10–12 mm); binder versions available\n• Ribbons: about 40,000 variations, including recycled-polyester grosgrain\n• Cord ends: embroidered, shrink, heat-press, metal and plastic tips\n• Samples sold as 3 m cuts or full rolls; New York showroom at the address above',
+   notes:'Our elastics contact.'},
+  {id:'t-huay',u:1,item:'Huay – metal rings, sliders & hooks',type:['Rings','Sliders','Hooks'],
+   mill:'Huay Accessories',contactName:'Michael',contactEmail:'michael@huayaccessories.cn',contactPhone:'+86 137 1272 1068 (tel / WhatsApp)',
+   otherContacts:'• Stella – stella@huayaccessories.cn – +86 136 0969 9865 (tel / WhatsApp)',
+   website:'none found (huayaccessories.cn has no working site)',status:'Contact only',
+   supplies:'From their sample binder (no website found):\n• Metal rings, sliders and hooks for bra straps ("Metal Ring Slider Hook" book), roughly 10–25 mm, in several metal finishes\n• Coated and decorative hardware (heart shapes etc.) in a "Pure & Minimal" range\n• The display also had trays of small hardware and what look like underwires; confirm with them',
+   notes:'Company name is cut off on the binder; it reads "… (HK) Industry Limited / … Garment Accessories Co., Ltd". Check the full name and phone numbers with them. The binder also shows what looks like a Global Recycled Standard seal.'}
+];
+var TABLES = {
+  fabrics:{label:'Fabrics',fields:FABRIC_FIELDS,seed:FABRIC_SEED,key:'ha-fabric-samples-v1',noun:'sample'},
+  trims:{label:'Trims & components',fields:TRIM_FIELDS,seed:TRIM_SEED,key:'ha-trims-v1',noun:'item'}
+};
+var table = 'fabrics';
+
 var state, view = 'All', query = '', sort = null, openId = null, dirty = false, pushing = false;
 
 // ---------- persistence ----------
@@ -373,11 +431,12 @@ function merge(a,b){
 function save(){ state.u = Date.now(); persist(); dirty = true; schedulePush(); }
 var pushTimer;
 function schedulePush(){ if(!SYNC_URL){ setSync('','Saved on this device'); return; } setSync('busy','Saving…'); clearTimeout(pushTimer); pushTimer = setTimeout(push, 1200); }
+function syncUrl(){ return SYNC_URL + (SYNC_URL.indexOf('?')<0 ? '?' : '&') + 'table=' + table; }
 function payload(){ return Object.assign({}, state, {columns: fields().map(function(f){ return {k:f.k,label:label(f)}; })}); }
 function push(){
   if(pushing){ schedulePush(); return; }
   pushing = true; dirty = false;
-  fetch(SYNC_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload())})
+  fetch(syncUrl(),{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload())})
     .then(function(r){ return r.json(); })
     .then(function(remote){ adopt(remote); setSync('ok','Synced '+clock()); })
     .catch(function(){ dirty = true; setSync('err','Offline — saved on this device'); })
@@ -385,7 +444,7 @@ function push(){
 }
 function pull(){
   if(!SYNC_URL || pushing || dirty) return;
-  fetch(SYNC_URL).then(function(r){ return r.json(); })
+  fetch(syncUrl()).then(function(r){ return r.json(); })
     .then(function(remote){ adopt(remote); setSync('ok','Synced '+clock()); if(dirty) push(); })
     .catch(function(){ setSync('err','Offline — saved on this device'); });
 }
@@ -407,6 +466,7 @@ function colorOf(f,o){ if(f.colors && f.colors[o]!=null) return f.colors[o]; var
 function rows(){ return state.rows.filter(function(r){ return !r.deleted; }); }
 function row(id){ return state.rows.filter(function(r){ return r.id===id; })[0]; }
 function touch(r){ r.u = Date.now(); }
+function titleOf(r){ var f = BASE.filter(function(x){ return x.pk; })[0]; return (f && r[f.k]) || 'Untitled '+TABLES[table].noun; }
 function weightClass(r){ var w = +r.weight; if(!w) return ''; return w < 150 ? 'Light' : w < 200 ? 'Mid' : 'Heavy'; }
 function display(r,f){
   var v = f.type==='computed' ? weightClass(r) : r[f.k];
@@ -437,7 +497,7 @@ function cell(r,f,inDrawer){
       if(t==='number'){ v = v.trim()==='' ? '' : (isNaN(+v) ? v : +v); }
       r[f.k] = v; touch(r); save();
       if(FIBERS.some(function(x){ return x[0]===f.k; }) || f.k==='weight') refreshDerived(r);
-      if(f.pk && openId===r.id) document.getElementById('dtitle').textContent = v || 'Untitled sample';
+      if(f.pk && openId===r.id) document.getElementById('dtitle').textContent = titleOf(r);
     });
     i.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key==='Escape') i.blur(); });
     c.appendChild(i);
@@ -643,7 +703,7 @@ function visible(){
 }
 // Collapsed sections are a per-viewer preference, so they stay in this browser only.
 var CKEY = 'ha-fabric-samples-collapsed', collapsed = [];
-try{ collapsed = JSON.parse(localStorage.getItem(CKEY)) || []; }catch(e){}
+function loadCollapsed(){ collapsed = []; try{ collapsed = JSON.parse(localStorage.getItem(CKEY)) || []; }catch(e){} }
 function toggleGroup(g){
   var i = collapsed.indexOf(g); if(i<0) collapsed.push(g); else collapsed.splice(i,1);
   try{ localStorage.setItem(CKEY, JSON.stringify(collapsed)); }catch(e){}
@@ -715,11 +775,11 @@ function render(){
     tr.appendChild(el('td'));
     tb.appendChild(tr);
   });
-  var ar = el('tr'), ac = el('td','addrow','+  Add sample'); ac.colSpan = fs.length+2;
+  var ar = el('tr'), ac = el('td','addrow','+  Add '+TABLES[table].noun); ac.colSpan = fs.length+2;
   ac.addEventListener('click', addRow); ar.appendChild(ac); tb.appendChild(ar);
   t.appendChild(tb);
 
-  renderTabs(); renderFoot(list);
+  renderTabs(); renderFoot(list); renderSeg();
 }
 function renderTabs(){
   var tabs = document.getElementById('tabs'); tabs.textContent = '';
@@ -735,12 +795,12 @@ function renderTabs(){
 function renderFoot(list){
   var f = document.getElementById('foot'); f.textContent = '';
   var ws = list.map(function(r){ return +r.weight; }).filter(Boolean);
-  f.appendChild(el('span',null, list.length+' sample'+(list.length===1?'':'s')));
+  f.appendChild(el('span',null, list.length+' '+TABLES[table].noun+(list.length===1?'':'s')));
   if(ws.length) f.appendChild(el('span',null,'Weight '+Math.min.apply(null,ws)+'–'+Math.max.apply(null,ws)+' g/m² · avg '+Math.round(ws.reduce(function(a,b){return a+b;},0)/ws.length)));
   f.appendChild(el('span',null,'Click a cell to edit · ⤢ on a row opens the full record'));
 }
 function addRow(){
-  var r = {id:'r'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),u:Date.now(),status:'Received',received:new Date().toISOString().slice(0,10)};
+  var r = {id:'r'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),u:Date.now(),status:table==='trims' ? 'Contact only' : 'Received',received:table==='trims' ? '' : new Date().toISOString().slice(0,10)};
   if(view!=='All') r.verdict = view;
   state.rows.push(r); save(); render(); openDrawer(r.id);
 }
@@ -765,7 +825,7 @@ function closeDrawer(){
 function renderDrawer(){
   var r = row(openId); if(!r) return;
   var keepScroll = document.getElementById('dbody').scrollTop;
-  document.getElementById('dtitle').textContent = r.sample || 'Untitled sample';
+  document.getElementById('dtitle').textContent = titleOf(r);
   var dv = document.getElementById('dverdict'); dv.textContent = '';
   if(r.verdict) dv.appendChild(pill(BASE[1], r.verdict));
   var body = document.getElementById('dbody'); body.textContent = '';
@@ -779,7 +839,7 @@ function renderDrawer(){
   });
   body.scrollTop = keepScroll;
   document.getElementById('dmeta').textContent = r.u ? 'Last edited '+new Date(r.u).toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : 'From the first NGS swatch batch';
-  var del = document.getElementById('ddelete'); del.classList.remove('armed'); del.textContent = 'Delete sample';
+  var del = document.getElementById('ddelete'); del.classList.remove('armed'); del.textContent = 'Delete '+TABLES[table].noun;
 }
 document.getElementById('ddelete').addEventListener('click', function(){
   var b = this;
@@ -801,14 +861,41 @@ document.getElementById('export').addEventListener('click', function(){
   visible().forEach(function(r){ lines.push(fs.map(function(f){ return esc(display(r,f)); }).join(',')); });
   var a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/csv'}));
-  a.download = 'hope-arouses-fabric-samples.csv'; a.click();
+  a.download = 'hope-arouses-'+(table==='trims' ? 'trims' : 'fabric-samples')+'.csv'; a.click();
   setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
 });
 window.addEventListener('resize', closePop);
 document.getElementById('gridwrap').addEventListener('scroll', closePop);
 
-state = load();
-render();
+function useTable(name){
+  if(!TABLES[name]) name = 'fabrics';
+  if(state && SYNC_URL && dirty){ clearTimeout(pushTimer); push(); }
+  closePop(); if(openId) closeDrawer();
+  table = name; var t = TABLES[name];
+  BASE = t.fields; SEED = t.seed; KEY = t.key;
+  CKEY = name==='fabrics' ? 'ha-fabric-samples-collapsed' : 'ha-'+name+'-collapsed'; loadCollapsed();
+  state = load(); view = 'All'; query = ''; sort = null;
+  document.getElementById('search').value = '';
+  document.getElementById('add').textContent = '+ New '+t.noun;
+  document.getElementById('ddelete').textContent = 'Delete '+t.noun;
+  try{ localStorage.setItem('ha-samples-table', name); }catch(e){}
+  if(location.hash !== '#'+name) history.replaceState(null,'','#'+name);
+  renderSeg(); render();
+  if(SYNC_URL) pull();
+}
+function renderSeg(){
+  var seg = document.getElementById('seg'); seg.textContent = '';
+  Object.keys(TABLES).forEach(function(name){
+    var b = el('button',null,TABLES[name].label); b.type='button'; b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', String(name===table));
+    if(name===table) b.appendChild(el('b',null,String(rows().length)));
+    b.addEventListener('click', function(){ if(name!==table) useTable(name); });
+    seg.appendChild(b);
+  });
+}
+var startTable = location.hash.slice(1);
+if(!TABLES[startTable]){ try{ startTable = localStorage.getItem('ha-samples-table'); }catch(e){} }
+useTable(startTable);
 if(SYNC_URL){ setSync('busy','Syncing…'); push(); setInterval(pull, 30000); }
 window.addEventListener('focus', pull);
 })();
