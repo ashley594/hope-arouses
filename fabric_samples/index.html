@@ -17,7 +17,7 @@
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   --p0:#FCE4EC;--t0:#8A1C45; --p1:#FFF1D6;--t1:#7A4B00; --p2:#E3F2E6;--t2:#1F5F2E; --p3:#E2EEFC;--t3:#1C4F8A;
   --p4:#EEE7FB;--t4:#4B2E83; --p5:#FDE8DD;--t5:#8A3B12; --p6:#E0F4F4;--t6:#155E63; --p7:#EFEFEC;--t7:#4A4A45;
-  --f-cotton:#C8B48E;--f-silk:#E7CF9E;--f-wool:#8E9AA8;--f-lyocell:#9DB89A;--f-elastane:#3A3A3A;--f-other:#CFCFCF;
+  --f-cotton:#C8B48E;--f-silk:#E7CF9E;--f-wool:#8E9AA8;--f-lyocell:#9DB89A;--f-linen:#B7AE8F;--f-elastane:#3A3A3A;--f-other:#CFCFCF;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -203,21 +203,23 @@ var SYNC_URL = '';
 var KEY = 'ha-fabric-samples-v1';
 
 var ICON = {text:'A',number:'#',select:'◉',multi:'≡',long:'¶',date:'▦',rating:'●',comp:'◐',computed:'ƒ'};
-var FIBERS = [['cotton','Cotton','--f-cotton'],['silk','Silk','--f-silk'],['wool','Wool','--f-wool'],['lyocell','Lyocell','--f-lyocell'],['elastane','Elastane','--f-elastane']];
+var FIBERS = [['cotton','Cotton','--f-cotton'],['silk','Silk','--f-silk'],['wool','Wool','--f-wool'],['lyocell','Lyocell','--f-lyocell'],['linen','Linen','--f-linen'],['elastane','Elastane','--f-elastane']];
 
 var BASE = [
   {k:'sample',label:'Sample #',type:'text',group:'Sample',w:110,pk:true},
-  {k:'verdict',label:'Verdict',type:'select',group:'Sample',w:104,options:['Love','Like','Maybe','Pass'],colors:{Love:0,Like:1,Maybe:3,Pass:7}},
+  {k:'verdict',label:'Verdict',type:'select',group:'Sample',w:104,options:['Love','Like','Maybe','Pass','Archive'],colors:{Love:0,Like:1,Maybe:3,Pass:7,Archive:6}},
   {k:'article',label:'Article code',type:'text',group:'Sample',w:210,mono:true},
   {k:'mill',label:'Mill',type:'select',group:'Sample',w:96,options:['NGS']},
   {k:'line',label:'Mill line',type:'select',group:'Sample',w:178,options:['Knitting the future','Knitting a green future']},
-  {k:'composition',label:'Composition (as tagged)',type:'comp',group:'Composition',w:240},
+  {k:'composition',label:'Composition (as tagged)',type:'comp',group:'Composition',w:280},
   {k:'cotton',label:'Cotton',type:'number',unit:'%',group:'Composition',w:84},
-  {k:'cottonType',label:'Cotton type',type:'select',group:'Composition',w:116,options:['Organic','Pima','Organic Pima','Conventional']},
+  {k:'cottonType',label:'Cotton type',type:'select',group:'Composition',w:116,options:['Organic','Pima','Supima','Organic Supima','Conventional']},
   {k:'silk',label:'Silk',type:'number',unit:'%',group:'Composition',w:76},
   {k:'silkType',label:'Silk type',type:'select',group:'Composition',w:108,options:['Mulberry','Spun','Noil']},
   {k:'wool',label:'Wool',type:'number',unit:'%',group:'Composition',w:76},
+  {k:'woolType',label:'Wool type',type:'select',group:'Composition',w:108,options:['Merino']},
   {k:'lyocell',label:'Lyocell',type:'number',unit:'%',group:'Composition',w:84},
+  {k:'linen',label:'Linen',type:'number',unit:'%',group:'Composition',w:76},
   {k:'elastane',label:'Elastane',type:'number',unit:'%',group:'Composition',w:90},
   {k:'weight',label:'Weight',type:'number',unit:'g/m²',group:'Construction',w:104},
   {k:'weightClass',label:'Weight class',type:'computed',group:'Construction',w:112},
@@ -239,7 +241,7 @@ var BASE = [
   {k:'notes',label:'Notes',type:'long',group:'Sourcing',w:260}
 ];
 
-function seedRow(id,o){ o.id=id; o.u=0; o.mill='NGS'; o.status='Received'; o.structure='Single jersey'; return o; }
+function seedRow(id,o){ return Object.assign({id:id,u:0,mill:'NGS',status:'Received',structure:'Single jersey'},o); }
 var SEED = [
   seedRow('s59661',{sample:'59661',verdict:'Love',article:'JL130COPIMASEDLY28',line:'Knitting the future',composition:'83% CO Pima · 9% Silk · 8% EA',cotton:83,cottonType:'Pima',silk:9,elastane:8,weight:130,width:135,gauge:28}),
   seedRow('s59699',{sample:'59699',verdict:'Like',article:'JL181LALY28',line:'Knitting the future',composition:'96% WO · 4% EA',wool:96,elastane:4,weight:180,width:145,gauge:28}),
@@ -248,7 +250,18 @@ var SEED = [
   seedRow('s48766',{sample:'48766',verdict:'Like',article:'JL165COGAZORLY28',line:'Knitting a green future',composition:'94% Organic CO · 6% EA',cotton:94,cottonType:'Organic',elastane:6,weight:165,width:165,gauge:28}),
   seedRow('s55281',{sample:'55281',verdict:'Love',article:'JL185COORLYOLY28NGS',line:'Knitting a green future',composition:'73% Organic CO · 24% CLY · 3% EA',cotton:73,cottonType:'Organic',lyocell:24,elastane:3,weight:185,width:174,gauge:28,notes:'Tag cut off after "3%" — elastane assumed from LY in the article code.'}),
   seedRow('s52473',{sample:'52473',verdict:'Love',article:'JL145COORSED28NGS',line:'Knitting a green future',composition:'70% Organic CO · 30% Silk',cotton:70,cottonType:'Organic',silk:30,weight:145,width:158,gauge:28}),
-  seedRow('s59050',{sample:'59050',verdict:'Love',article:'JL130SEDMULB28NGS',line:'Knitting the future',composition:'100% Silk',silk:100,silkType:'Mulberry',weight:130,width:152,gauge:28})
+  seedRow('s59050',{sample:'59050',verdict:'Love',article:'JL130SEDMULB28NGS',line:'Knitting the future',composition:'100% Silk',silk:100,silkType:'Mulberry',weight:130,width:152,gauge:28}),
+  // Archive: documented, not expected to be used
+  seedRow('s58161',{sample:'58161',verdict:'Archive',article:'JL155COORSUPIMASED28NGS',line:'Knitting a green future',composition:'80% Supima CO Organic · 20% Seda',cotton:80,cottonType:'Organic Supima',silk:20,weight:155,width:162,gauge:28}),
+  seedRow('s58167',{sample:'58167',verdict:'Archive',article:'JL160COORSUPIMAFLAXLY28',line:'Knitting a green future',composition:'74% Org. CO Supima · 18% LI · 8% EA',cotton:74,cottonType:'Organic Supima',linen:18,elastane:8,weight:160,width:138,gauge:28}),
+  seedRow('s61716',{sample:'61716',verdict:'Archive',article:'JL145LACOOR28NGS',line:'Knitting a green future',composition:'55% WO · 45% CO Organic',wool:55,cotton:45,cottonType:'Organic',weight:145,width:165,gauge:28}),
+  seedRow('s54318',{sample:'54318',verdict:'Archive',article:'JL185COORSEALY28NGS',line:'Knitting a green future',composition:'78% Organic CO · 19% SeaCell · 3% EA',cotton:78,cottonType:'Organic',lyocell:19,elastane:3,weight:185,width:170,gauge:28,notes:'SeaCell is a lyocell with seaweed in the fiber, so it is counted under Lyocell.'}),
+  seedRow('s58770',{sample:'58770',verdict:'Archive',article:'IL175LASED24NGS',line:'Knitting the future',composition:'85% WO · 15% Silk',wool:85,silk:15,weight:195,width:152,gauge:24,structure:'',notes:'Tag says 195 g/m², article code says 175. Code starts IL rather than JL (possibly interlock), so structure is left blank.'}),
+  seedRow('s58768',{sample:'58768',verdict:'Archive',article:'JL115LASED28NGS',line:'Knitting the future',composition:'85% WO · 15% Silk',wool:85,silk:15,weight:115,width:150,gauge:28}),
+  seedRow('s57502',{sample:'57502',verdict:'Archive',article:'JL120SEDMULBLAMER28NGS',line:'Knitting the future',composition:'50% Silk · 50% WO',silk:50,silkType:'Mulberry',wool:50,woolType:'Merino',weight:120,width:140,gauge:28}),
+  seedRow('s59700',{sample:'59700',verdict:'Archive',article:'JL201LALY28',line:'Knitting the future',composition:'90% WO · 10% EA',wool:90,elastane:10,weight:200,width:150,gauge:28}),
+  seedRow('s33454',{sample:'33454',verdict:'Archive',article:'JL155SUPIMALY28',line:'Knitting the future',composition:'95% CO Supima · 5% EA',cotton:95,cottonType:'Supima',elastane:5,weight:165,width:170,gauge:28,notes:'Tag says 165 g/m², article code says 155.'}),
+  seedRow('s52358',{sample:'52358',verdict:'Archive',article:'JL190SUPIMALY28',line:'Knitting the future',composition:'95% CO Supima · 5% EA',cotton:95,cottonType:'Supima',elastane:5,weight:190,width:175,gauge:28})
 ];
 
 var state, view = 'All', query = '', sort = null, openId = null, dirty = false, pushing = false;
@@ -256,7 +269,7 @@ var state, view = 'All', query = '', sort = null, openId = null, dirty = false, 
 // ---------- persistence ----------
 function blank(){ return {rows:SEED.map(function(r){return Object.assign({},r);}),custom:[],options:{},labels:{},u:0}; }
 function load(){
-  try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && s.rows) return Object.assign(blank(),s); }catch(e){}
+  try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && s.rows) return merge(Object.assign(blank(),s), blank()); }catch(e){}
   return blank();
 }
 function persist(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
@@ -597,7 +610,7 @@ function render(){
 }
 function renderTabs(){
   var tabs = document.getElementById('tabs'); tabs.textContent = '';
-  ['All','Love','Like','Maybe','Pass'].forEach(function(v){
+  ['All','Love','Like','Maybe','Pass','Archive'].forEach(function(v){
     var n = v==='All' ? rows().length : rows().filter(function(r){ return r.verdict===v; }).length;
     if(v!=='All' && v!=='Love' && v!=='Like' && !n && view!==v) return;
     var b = el('button','tab',v); b.type='button'; b.setAttribute('aria-pressed', String(view===v));
