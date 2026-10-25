@@ -1674,6 +1674,22 @@ img{max-width:100%}
     });
   });
 
+  // ---- Autosave: capture progress in case they abandon partway through ----
+  var submitted=false;
+  form.addEventListener('submit',function(){ submitted=true; });
+  form.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-next],button[data-goto]');
+    if(b) send(collect(null),'partial');
+  });
+  window.addEventListener('pagehide',function(){
+    if(submitted || !navigator.sendBeacon) return;
+    var payload=collect(null);
+    payload.response_id=rid; payload.part='partial-unload';
+    payload.submitted_at=new Date().toISOString();
+    payload.minutes_taken=Math.round((Date.now()-started)/6000)/10;
+    navigator.sendBeacon(ENDPOINT,new Blob([JSON.stringify(payload)],{type:'text/plain;charset=utf-8'}));
+  });
+
   // Ask for an email once. After that, the follow-ups become yes/no.
   var mainEmail=document.getElementById('optinEmail');
   function syncOptins(){
