@@ -286,7 +286,7 @@ function wh(ref,structure,width,weight,composition,fib,extra){
   o.u = WH_BASE.u;
   return seedRow('wh'+ref.replace(/-/g,''),o);
 }
-var ICHIMEN = {mill:'Ichimen',line:'',status:'Received',contactPhone:'+81 3-3404-2311 · fax +81 3-3475-5722',
+var ICHIMEN = {mill:'Ichimen',line:'',status:'Monica',u:3,contactPhone:'+81 3-3404-2311 · fax +81 3-3475-5722',
   address:'Ichimen Co., Ltd., 3-29-3 Jingumae, Shibuya-ku, Tokyo 150-0001, Japan · ichimen.co.jp'};
 var FABRIC_SEED = [
   seedRow('s59661',{sample:'59661',verdict:'Love',article:'JL130COPIMASEDLY28',line:'Knitting the future',composition:'83% CO Pima · 9% Silk · 8% EA',cotton:83,cottonType:'Pima',silk:9,elastane:8,weight:130,width:135,gauge:28}),
@@ -410,7 +410,7 @@ var state, view = 'All', query = '', sort = null, openId = null, dirty = false, 
 // ---------- persistence ----------
 function blank(){ return {rows:SEED.map(function(r){return Object.assign({},r);}),custom:[],options:{},labels:{},u:0}; }
 function load(){
-  try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && s.rows) return backfill(merge(Object.assign(blank(),s), blank())); }catch(e){}
+  try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s && s.rows) return migrate(backfill(merge(Object.assign(blank(),s), blank()))); }catch(e){}
   return blank();
 }
 // Rows someone has edited keep their values; seed details only fill fields that are still empty.
@@ -421,11 +421,30 @@ function backfill(st){
   });
   return st;
 }
+// One-time fixes applied to data already saved in a browser, even on rows someone has edited.
+var MIGRATIONS = {
+  'monica-2026-10-25': function(st){
+    st.rows.forEach(function(r){
+      if(r.mill==='Willy Hermann – Superfine' || r.mill==='Ichimen'){ r.status = 'Monica'; r.u = Date.now(); }
+    });
+  }
+};
+function migrate(st){
+  if(table!=='fabrics') return st;
+  st.migrations = st.migrations || [];
+  var changed = false;
+  Object.keys(MIGRATIONS).forEach(function(k){
+    if(st.migrations.indexOf(k)<0){ MIGRATIONS[k](st); st.migrations.push(k); changed = true; }
+  });
+  if(changed){ st.u = Date.now(); try{ localStorage.setItem(KEY, JSON.stringify(st)); }catch(e){} }
+  return st;
+}
 function persist(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
 function newer(a,b){ return (b && (!a || (b.u||0) > (a.u||0))) ? b : a; }
 function merge(a,b){
   if(!b || !b.rows) return a;
-  var out = {rows:[],custom:[],options:{},labels:{},u:Math.max(a.u||0,b.u||0)};
+  var out = {rows:[],custom:[],options:{},labels:{},u:Math.max(a.u||0,b.u||0),
+    migrations:(a.migrations||[]).concat((b.migrations||[]).filter(function(m){ return (a.migrations||[]).indexOf(m)<0; }))};
   var byId = {}, order = [];
   a.rows.concat(b.rows).forEach(function(r){ if(!byId[r.id]) order.push(r.id); byId[r.id] = newer(byId[r.id], r); });
   out.rows = order.map(function(id){ return byId[id]; });
