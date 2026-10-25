@@ -207,10 +207,14 @@ var FIBERS = [['cotton','Cotton','--f-cotton'],['silk','Silk','--f-silk'],['wool
 
 var BASE = [
   {k:'sample',label:'Sample #',type:'text',group:'Sample',w:110,pk:true},
-  {k:'verdict',label:'Verdict',type:'select',group:'Sample',w:104,options:['Love','Like','Maybe','Pass','Archive'],colors:{Love:0,Like:1,Maybe:3,Pass:7,Archive:6}},
+  {k:'verdict',label:'Verdict',type:'select',group:'Sample',w:104,options:['Love','Like','Archive'],colors:{Love:0,Like:1,Archive:6}},
+  {k:'use',label:'Intended use',type:'multi',group:'Sample',w:200,options:['Underwear','Bralette','Underwire','Activewear'],colors:{Underwear:4,Bralette:0,Underwire:3,Activewear:2}},
   {k:'article',label:'Article code',type:'text',group:'Sample',w:210,mono:true},
-  {k:'mill',label:'Mill',type:'select',group:'Sample',w:96,options:['NGS']},
-  {k:'line',label:'Mill line',type:'select',group:'Sample',w:178,options:['Knitting the future','Knitting a green future']},
+  {k:'mill',label:'Company',type:'select',group:'Company',w:120,options:['NGS']},
+  {k:'line',label:'Collection',type:'select',group:'Company',w:178,options:['Knitting the future','Knitting a green future']},
+  {k:'contactName',label:'Contact',type:'text',group:'Company',w:150},
+  {k:'contactEmail',label:'Contact email',type:'text',group:'Company',w:200},
+  {k:'contactPhone',label:'Contact phone',type:'text',group:'Company',w:140},
   {k:'composition',label:'Composition (as tagged)',type:'comp',group:'Composition',w:280},
   {k:'cotton',label:'Cotton',type:'number',unit:'%',group:'Composition',w:84},
   {k:'cottonType',label:'Cotton type',type:'select',group:'Composition',w:116,options:['Organic','Pima','Supima','Organic Supima','Conventional']},
@@ -232,7 +236,6 @@ var BASE = [
   {k:'stretch',label:'Stretch & recovery',type:'rating',group:'Hand feel',w:140},
   {k:'opacity',label:'Opacity',type:'rating',group:'Hand feel',w:100},
   {k:'feel',label:'Feel notes',type:'long',group:'Hand feel',w:260},
-  {k:'use',label:'Could work for',type:'multi',group:'Product fit',w:200,options:['Bra cup','Bralette','Bra band','Lining','Brief','Thong','Boyshort','Sleep / lounge']},
   {k:'price',label:'Price / m',type:'text',group:'Sourcing',w:96},
   {k:'moq',label:'MOQ',type:'text',group:'Sourcing',w:96},
   {k:'lead',label:'Lead time',type:'text',group:'Sourcing',w:100},
@@ -610,9 +613,9 @@ function render(){
 }
 function renderTabs(){
   var tabs = document.getElementById('tabs'); tabs.textContent = '';
-  ['All','Love','Like','Maybe','Pass','Archive'].forEach(function(v){
+  ['All','Love','Like','Archive'].forEach(function(v){
     var n = v==='All' ? rows().length : rows().filter(function(r){ return r.verdict===v; }).length;
-    if(v!=='All' && v!=='Love' && v!=='Like' && !n && view!==v) return;
+    if(v==='Archive' && !n && view!==v) return;
     var b = el('button','tab',v); b.type='button'; b.setAttribute('aria-pressed', String(view===v));
     b.appendChild(el('b',null,String(n)));
     b.addEventListener('click', function(){ view = v; render(); });
