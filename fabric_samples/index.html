@@ -257,6 +257,11 @@ var FABRIC_FIELDS = [
   {k:'stretch',label:'Stretch & recovery',type:'rating',group:'Hand feel',w:140},
   {k:'opacity',label:'Opacity',type:'rating',group:'Hand feel',w:100},
   {k:'feel',label:'Feel notes',type:'long',group:'Hand feel',w:260},
+  {k:'monica',label:"Monica's feedback",type:'long',group:'Fit notes',w:320},
+  {k:'sizeRange',label:'Size range',type:'multi',group:'Fit notes',w:170,options:['Smaller sizes','Larger sizes','All sizes'],colors:{'Smaller sizes':6,'Larger sizes':4,'All sizes':2}},
+  {k:'monicaFor',label:'Monica: works for',type:'multi',group:'Fit notes',w:220},
+  {k:'monicaNot',label:'Monica: not for',type:'multi',group:'Fit notes',w:160},
+  {k:'pairsWith',label:'Same pattern as',type:'text',group:'Fit notes',w:140},
   {k:'certs',label:'Certifications',type:'multi',group:'Sourcing',w:190,options:['OEKO-TEX Standard 100','OEKO-TEX STeP','GOTS','GRS']},
   {k:'price',label:'Price / m',type:'text',group:'Sourcing',w:96},
   {k:'quote',label:'Quote ref',type:'text',group:'Sourcing',w:210},
@@ -315,8 +320,8 @@ var FABRIC_SEED = [
   seedRow('s53225',{sample:'53225',article:'JL176COORLY28',composition:'Organic CO · EA (% not on quote)',cottonType:'Organic',weight:175,width:155,gauge:28,price:'€4.12',quote:NGSQ.quote,status:'',
     notes:'Only on the NGS quote so far, no swatch photographed. Composition read from the article code (CO OR = organic cotton, LY = elastane); confirm percentages.'}),
   // Gusset options
-  seedRow('wh015285',Object.assign({sample:'015285',article:'015285-Y000-000',composition:'100% Cotton',cotton:100,weight:105,width:175,gauge:44,notes:'Gauge E44 is printed on this card. Listed as 015285-0000-000-000 on offer 704301.'},WH)),
-  seedRow('wh010718',Object.assign({sample:'010718',article:'010718-0000-000',composition:'100% Cotton',cotton:100,weight:120,width:160,notes:'Offer 704301: technical restrictions apply.'},WH)),
+  seedRow('wh015285',Object.assign({monica:'Perfect for the gusset. White only, for health and hygiene.',monicaFor:['Underwear gusset'],sample:'015285',article:'015285-Y000-000',composition:'100% Cotton',cotton:100,weight:105,width:175,gauge:44,notes:'Gauge E44 is printed on this card. Listed as 015285-0000-000-000 on offer 704301.'},WH)),
+  seedRow('wh010718',Object.assign({monica:'Perfect for the gusset. White only, for health and hygiene.',monicaFor:['Underwear gusset'],sample:'010718',article:'010718-0000-000',composition:'100% Cotton',cotton:100,weight:120,width:160,notes:'Offer 704301: technical restrictions apply.'},WH)),
   // Willy Hermann offer 704301 (21 Sep 2026)
   wh('012734-0000-000-000','Single jersey',160,160,'80% Cotton / 20% Elastane',{cotton:80,cottonType:'Supima',elastane:20},{verdict:'Archive',u:2}),
   wh('013776-0000-000-000','Single jersey',135,155,'89% Cotton / 11% Elastane',{cotton:89,cottonType:'Supima',elastane:11},{verdict:'Archive',u:2}),
@@ -333,15 +338,15 @@ var FABRIC_SEED = [
   wh('015469-0000-000-000','Single jersey',148,105,'47% Bamboo / 47% Tencel / 6% Elastane',{bamboo:47,lyocell:47,elastane:6},{verdict:'Archive',u:2,tbc:1,notes:'Colour restrictions apply. Tencel is counted under Lyocell.'}),
   wh('015476-MPY0-000-000','Single jersey',147,145,'78% Cotton Supima / 22% Elastane',{cotton:78,cottonType:'Supima',elastane:22},{verdict:'Like',u:2}),
   wh('015518-0000-000-000','Single jersey',151,160,'100% Merino Wool sw',{wool:100,woolType:'Merino (superwash)'},{verdict:'Love',u:2,tbc:1}),
-  wh('015589-0000-000-000','Single jersey',154,175,'93% Cotton / 7% Elastane',{cotton:93,elastane:7}),
+  wh('015589-0000-000-000','Single jersey',154,175,'93% Cotton / 7% Elastane',{cotton:93,elastane:7},{monica:'Great, would work for all size ranges. Almost identical properties to the grey merino (016171), so she could use the same pattern for both.\n\nGeneral: she suggests two fabric weights for the two size ranges, lighter for smaller sizes and heavier for larger. She could also change the stretch lines to add support in the larger sizes.',sizeRange:['All sizes'],pairsWith:'016171'}),
   wh('015593-0000-000-000','Single jersey',144,185,'46% Tencel / 46% Merino Wool sw / 8% Elastane',{lyocell:46,wool:46,woolType:'Merino (superwash)',elastane:8},{verdict:'Archive',u:2,tbc:1,notes:'Tencel is counted under Lyocell.'}),
-  wh('015668-A000-000-000','Single jersey',140,140,'95% Cotton / 5% Elastane',{cotton:95,elastane:5}),
-  wh('015787-0000-000-000','Fine rib needle-out',115,150,'100% Merino Wool sw',{wool:100,woolType:'Merino (superwash)'},{verdict:'Love',u:2,tbc:1}),
+  wh('015668-A000-000-000','Single jersey',140,140,'95% Cotton / 5% Elastane',{cotton:95,elastane:5},{monica:'Likes it. Works for the smaller size range but not great for larger sizes.\n\nGeneral: she suggests two fabric weights for the two size ranges, lighter for smaller sizes and heavier for larger. She could also change the stretch lines to add support in the larger sizes.',sizeRange:['Smaller sizes']}),
+  wh('015787-0000-000-000','Fine rib needle-out',115,150,'100% Merino Wool sw',{wool:100,woolType:'Merino (superwash)'},{monica:'Beautiful. Could make panties and a tank or cami, but not the bralette.',monicaFor:['Underwear','Tank / undershirt','Camisole'],monicaNot:['Bralette'],verdict:'Love',u:2,tbc:1}),
   wh('015993-AGX0-V10-000','Pique',127,170,'92% PA recycled dopedyed / 5% Polyester metallised / 3% Polyamide',{polyamide:95,polyester:5},{notes:'Polyamide = 92% recycled dope-dyed PA + 3% polyamide. Polyester is metallised.'}),
   wh('016020-0000-000-000','Single jersey',145,95,'89% Cotton organic GOTS / 11% Elastane',{cotton:89,cottonType:'Organic',elastane:11},{verdict:'Like',u:2,tbc:1,certs:['OEKO-TEX Standard 100','OEKO-TEX STeP','GOTS']}),
   wh('016090-S000-000-000','Single jersey',159,125,'90% Cotton / 10% Elastane',{cotton:90,cottonType:'Supima',elastane:10},{verdict:'Archive',u:2}),
   wh('016120-0000-000-000','Fine rib',145,155,'70% Merino Wool sw / 30% Silk',{wool:70,woolType:'Merino (superwash)',silk:30},{verdict:'Like',u:2,tbc:1}),
-  wh('016171-0000-V10-000','Single jersey',155,150,'76% Merino Wool sw / 19% Silk Melange / 5% Elastane',{wool:76,woolType:'Merino (superwash)',silk:19,elastane:5},{verdict:'Love',u:2,tbc:1}),
+  wh('016171-0000-V10-000','Single jersey',155,150,'76% Merino Wool sw / 19% Silk Melange / 5% Elastane',{wool:76,woolType:'Merino (superwash)',silk:19,elastane:5},{monica:'Best overall of the merinos. She could use the same pattern as the heavier cotton (015589, 93/7) because they have almost identical properties.',pairsWith:'015589',verdict:'Love',u:2,tbc:1}),
   wh('016188-0000-000-000','Interlock',157,145,'100% Merino Wool sw',{wool:100,woolType:'Merino (superwash)'},{verdict:'Love',u:2}),
   wh('016199-0000-000-000','Single jersey',140,135,'93% Merino Wool sw / 7% Elastane',{wool:93,woolType:'Merino (superwash)',elastane:7},{verdict:'Love',u:2,tbc:1}),
   wh('042779-0000-260-000','Rib',26,160,'70% Merino Wool sw / 30% Silk',{wool:70,woolType:'Merino (superwash)',silk:30},{variant:1,tbc:1,notes:'Narrow rib, 26 cm wide.'}),
@@ -349,15 +354,18 @@ var FABRIC_SEED = [
   wh('042779-0000-290-000','Rib',29,160,'70% Merino Wool sw / 30% Silk',{wool:70,woolType:'Merino (superwash)',silk:30},{variant:1,tbc:1,notes:'Narrow rib, 29 cm wide.'}),
   wh('042779-0000-330-000','Rib',33,160,'70% Merino Wool sw / 30% Silk',{wool:70,woolType:'Merino (superwash)',silk:30},{variant:1,tbc:1,notes:'Narrow rib, 33 cm wide.'}),
   // Ichimen header cards (dated 2026/6)
-  seedRow('ich-IM-184',Object.assign({sample:'IM-184',article:'IM-184',verdict:'Love',use:['Underwire','Bralette'],structure:'Woven – organdy',
+  seedRow('ich-IM-184',Object.assign({monica:'She assumes this is for a stable-cup underwire bra.',monicaFor:['Underwire'],sample:'IM-184',article:'IM-184',verdict:'Love',use:['Underwire','Bralette'],structure:'Woven – organdy',
     composition:'100% Cotton · 100/2 organdy',cotton:100,weight:78,width:108,
     notes:'100/2 gas-burned high-twist cotton yarn; delicate, crisp, dry hand. Sold as 108 cm × 58 m. Handwritten on card: "could this replace mesh?? nonstretch cups?"'},ICHIMEN)),
-  seedRow('ich-IC-60000',Object.assign({sample:'IC-60000',article:'IC-60000',verdict:'Love',use:['Underwire','Bralette'],structure:'Woven – typewriter / poplin',
+  seedRow('ich-IC-60000',Object.assign({monica:'She assumes this is for a stable-cup underwire bra.',monicaFor:['Underwire'],sample:'IC-60000',article:'IC-60000',verdict:'Love',use:['Underwire','Bralette'],structure:'Woven – typewriter / poplin',
     composition:'100% Cotton · 60/- typewriter stripe',cotton:100,weight:133,width:152,
     notes:'High-density 60/- typewriter cloth; moderate crispness, smooth surface. Width 152/154 cm, sold as 60 m. Made in Vietnam.'},ICHIMEN))
 ];
 
 // ---------- trims & components ----------
+FABRIC_FIELDS.forEach(function(f){
+  if(f.k==='monicaFor' || f.k==='monicaNot'){ var u = FABRIC_FIELDS.filter(function(x){ return x.k==='use'; })[0]; f.options = u.options; f.colors = u.colors; }
+});
 var TRIM_FIELDS = [
   {k:'item',label:'Item',type:'text',group:'Item',w:300,pk:true},
   {k:'verdict',label:'Verdict',type:'select',group:'Item',w:104,options:['Love','Like','Archive'],colors:{Love:0,Like:1,Archive:6}},
